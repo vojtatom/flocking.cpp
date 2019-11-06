@@ -153,7 +153,7 @@ int main(int argc, char *argv[])
     cout << "Using GLEW Version: " << glewGetString(GLEW_VERSION) << endl;
 
     //simulation init
-    engine = new SimulationEngine(1000, glm::vec3(-10, -10, -10), glm::vec3(10, 10, 10));
+    engine = new SimulationEngine(200, glm::vec3(-100, -100, -100), glm::vec3(100, 100, 100));
 
     // Create main window and set callbacks
     glutTimerFunc(0, timer, 0);

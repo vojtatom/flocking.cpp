@@ -3,13 +3,14 @@
 #include <iostream>
 #include "camera.hpp"
 #include "agent.hpp"
+#include "utils.hpp"
 
 using namespace std;
 
 #define DELTA 0.1f
 
 Camera::Camera(glm::vec3 _pos, glm::vec3 _center, glm::vec3 _up)
-    : pos(_pos), center(_center), up(_up), sPos(_pos), sCenter(center), sUp(_up), fovy(45), aspect(1), near(1), far(100)
+    : pos(_pos), center(_center), up(_up), sPos(_pos), sCenter(center), sUp(_up), fovy(45), aspect(1), near(1), far(1000)
 {
     projection = glm::perspective(fovy, aspect, near, far);
     view = glm::lookAt(pos, center, up);
@@ -65,10 +66,7 @@ void Camera::frame(){
     }
 
 
-    float dot = glm::dot(sUp, up);
-    float len = glm::length(sUp) * glm::length(up);
-    float dl = dot / len;
-    float a = acos(max(-1.0f, min(dl, 1.0f))); //minmax to prevent errors
+    float a = angle(sUp, up);
     rotMomentum =  fmin(a, MAXSPEED * 3.14f);
 
     if (rotMomentum > 0.02f){

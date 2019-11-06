@@ -18,9 +18,8 @@ ostream & operator<<(ostream & os, const glm::vec3 & v)
 ostream & operator<<(ostream & os, const AgentContainer & agents){
     for (size_t i = 0; i < agents.size; i++)
     {
-        os << "Agent " << agents.positions[i] << "\n      ";
-        os << agents.directions[i] << "\n      ";
-        os << agents.velocities[i] << "\n";
+        os << "Agent " << agents.boids[i].position << "\n      ";
+        os << agents.boids[i].velocity << "\n";
     }
     return os;
 }

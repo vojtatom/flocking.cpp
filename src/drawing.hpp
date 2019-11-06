@@ -38,7 +38,6 @@ private:
 
     GLuint vao;
     GLuint posBuffer;
-    GLuint dirBuffer;
     GLuint velBuffer;
 
     Program agentProgram;

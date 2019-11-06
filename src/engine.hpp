@@ -15,6 +15,7 @@ public:
     //subclasses
     Interface interface;
 private:
+    void flock(const size_t me, size_t * boids, size_t lboids);
     friend class Interface;
 
     AgentContainer *agents;

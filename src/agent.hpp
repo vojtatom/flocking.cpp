@@ -2,14 +2,20 @@
 #include <cstddef>
 #include <glm/glm.hpp>
 #include <iostream>
+#include "dna.hpp"
 
 using namespace std;
 
+struct Agent{
+    glm::vec3 position;
+    glm::vec3 velocity;  
+    glm::vec3 acceleration;  
+    DNA dna;
+};
+
 struct AgentContainer
 {
-    glm::vec3 * positions;
-    glm::vec3 * directions;
-    float * velocities;
+    Agent * boids;
     size_t size;
 };
 
