@@ -1,27 +1,20 @@
 #include <unordered_map>
 #include <iostream>
+#include <fstream>
 #include <glm/glm.hpp>
+#include "boid.hpp"
 #include "environment.hpp"
 
 using namespace std;
 
 Environment::Environment(int argc, char *argv[])
 {
-    int apptype = 0;
-    int boidsCountPower = 10;
-
-    if (argc > 1)
-        apptype = atoi(argv[1]);
-
-    if (argc > 2)
-        boidsCountPower = max(1, atoi(argv[2]));
-
     //general settings
-    addRecord("appType", apptype);
-    addRecord("boidCount", 1 << boidsCountPower);
+    addRecord("appType", 0);
+    addRecord("boidCount", 1024);
     addRecord("spaceLow", -1000, -1000, -1000);
     addRecord("spaceHigh", 1000, 1000, 1000);
-    addRecord("grid", 50, 50, 50);
+    addRecord("dark", 1);
 
     //flocking
     addRecord("flockingZone", 40.0f);
@@ -44,9 +37,82 @@ Environment::Environment(int argc, char *argv[])
 	}
 
 	path = string(argv[0], j);
+    cout << "Enviroment settings:" << endl;
 	cout << path << endl;
 
-    //todo READ file
+    //read environment file
+    ifstream env(path + "env.txt");
+    string title, type;
+
+    int32_t integer;
+    float a, b, c;
+
+    while(!env.eof())
+    {
+        env >> title;
+
+        if (title[0] == '#')
+        {
+            //comment, skip line
+            while ((env.peek()!='\n') && (env>>title));
+        } else {
+            env >> type;
+
+            cout << title << " " << type << " " << flush;
+
+            if (type == "int")
+            {
+                env >> integer;
+                addRecord(title, integer);
+                cout << integer << endl;
+            } 
+            else if (type == "float")
+            {
+                env >> a;
+                addRecord(title, a);
+                cout << a << endl;
+            } 
+            else if (type == "vec3")
+            {
+                env >> a >> b >> c;
+                addRecord(title, a, b, c);
+                cout << a << " " << b << " " << c << endl;
+            } 
+            else 
+            {
+                cout << "Unknwn format found in env file, skipping: " << type << endl;
+            }
+        }
+
+        if (env.bad())
+        {
+            cout << "Error reading environment file, last read: " << title << " " << type << endl;
+            //todo quit better
+            exit(1);
+        }
+    }
+
+
+    //read commanline args
+    int apptype = 0;
+    int boidsCountPower = 10;
+
+    if (argc > 1){
+        apptype = atoi(argv[1]);
+        addRecord("appType", apptype);
+    }
+
+    if (argc > 2){
+        boidsCountPower = max(1, atoi(argv[2]));
+        addRecord("boidCount", boidsCountPower);
+    }
+
+    //setup grid
+    glm::vec3 space = getVec("spaceHigh") - getVec("spaceLow");
+    float zone = 2 * getFloat("flockingZone");
+    glm::uvec3 grid = glm::max(space / zone, glm::vec3(1));
+    cout << "grid" << grid << endl;
+    addRecord("grid", grid.x, grid.y, grid.z);
 }
 
 

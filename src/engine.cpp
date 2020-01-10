@@ -2,6 +2,7 @@
 #include <glm/ext.hpp>
 #include <glm/gtx/norm.hpp>
 #include <random>
+#include <chrono>
 #include "engine.hpp"
 #include "glcontext.hpp"
 #include "boid.hpp"
@@ -18,7 +19,7 @@ SimulationEngine::SimulationEngine(Environment * _env)
     lowBorder = env->getVec("spaceLow");
     highBorder = env->getVec("spaceHigh");
     diagonal = highBorder - lowBorder;
-    boidCount = env->getInt("boidCount");
+    boidCount = 1 << env->getInt("boidCount");
 
     range = env->getFloat("flockingZone"); 
     range2 = range * range;
@@ -150,6 +151,7 @@ EngineCPUBasic::~EngineCPUBasic()
 
 void EngineCPUBasic::draw()
 {
+    startTime();
     //update values
     update();
     context->setupBoids();
@@ -157,6 +159,7 @@ void EngineCPUBasic::draw()
 
     //handle UI
     interface.updateContext();
+    stopTime();
 }
 
 void EngineCPUBasic::update()
@@ -211,6 +214,7 @@ EngineCPUTree::~EngineCPUTree()
 void EngineCPUTree::draw()
 {
     //update values
+    startTime();
     update();
     context->setupBoids();
     context->setupTree();
@@ -219,6 +223,7 @@ void EngineCPUTree::draw()
 
     //handle UI
     interface.updateContext();
+    stopTime();
 }
 
 void EngineCPUTree::update()
@@ -278,11 +283,13 @@ EngineGPUBasic::~EngineGPUBasic()
 void EngineGPUBasic::draw()
 {
     //update values
+    startTime();
     update();
     context->draw();
 
     //handle UI
     interface.updateContext();
+    stopTime();
 }
 
 void EngineGPUBasic::update()
@@ -355,11 +362,13 @@ EngineGPUGrid::~EngineGPUGrid()
 void EngineGPUGrid::draw()
 {
     //update values
+    startTime();
     update();
     context->draw();
 
     //handle UI
     interface.updateContext();
+    stopTime();
 }
 
 void EngineGPUGrid::update()

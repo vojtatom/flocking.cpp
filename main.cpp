@@ -117,13 +117,13 @@ void myMouse(int button, int state, int x, int y)
     }
     
     
-    cout << button << " " << state << " " << x << " " << y << endl;
+    //cout << button << " " << state << " " << x << " " << y << endl;
 }
 
 void myMouseMove(int x, int y)
 {
     //calls with mouse down
-    cout << x << " " << y << endl;
+    //cout << x << " " << y << endl;
     engine->interface.mouseMove(x, y);
 }
 
@@ -157,14 +157,9 @@ int main(int argc, char *argv[])
 
     Environment * env = new Environment(argc, argv);
 
-    //read apptype
-    unsigned int apptype = 0;
-    if (argc > 1)
-        apptype = atoi(argv[1]);
-
 
     //simulation init
-    switch (apptype)
+    switch (env->getInt("appType"))
     {
     case 0:
         engine = new EngineCPUBasic(env);
@@ -182,6 +177,7 @@ int main(int argc, char *argv[])
         engine = new EngineGPUGrid(env);
         break;
     default:
+        cout << "Unknown app type, ending..." << endl;
         break;
     }
 

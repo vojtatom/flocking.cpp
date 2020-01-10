@@ -200,8 +200,8 @@ void OctalTreeContainer::reset() {
 
 void OctalTreeContainer::printStats()
 {
-    cout << "Traversed:     " << traversed << endl;
+    /*cout << "Traversed:     " << traversed << endl;
     cout << "Queries:       " << queries << endl;
     cout << "Max Traversed: " << maxTraversed << endl;
-    cout << "Avg Traversed: " << float(traversed) / float(queries) << endl;
+    cout << "Avg Traversed: " << float(traversed) / float(queries) << endl;*/
 }

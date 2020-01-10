@@ -57,4 +57,5 @@ struct BoidContainer
 
 ostream & operator<<(ostream & os, const glm::vec4 & v);
 ostream & operator<<(ostream & os, const glm::vec3 & v);
+ostream & operator<<(ostream & os, const glm::uvec3 & v);
 ostream & operator<<(ostream & os, const BoidContainer & agents);

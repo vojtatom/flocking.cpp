@@ -1,13 +1,10 @@
-#version 430 core
+//#version 430 core
+//#define RANGE 40
+//#define SPFAC 2.0f
+//#define FORLIM 0.1f
 
 layout (local_size_x = 1024) in;
 
-#define RANGE 40
-#define SUBTREES 8
-#define BOIDSPERTREE 16
-#define NONE -1
-
-#define MAXTREETRAVERSED 20
 
 //STRUCTS
 struct Boid{
@@ -99,6 +96,7 @@ vec3 limit(vec3 v, float limit){
     return v;
 }
 
+
 void flock(uint boidIdx)
 {
     if (myId == boidIdx)
@@ -132,13 +130,14 @@ void traverseCell(uint x, uint y, uint z)
     uint start = indices[id];
     uint end = indices[id + 1];
 
+    if (start == end)
+        return;
+
     for (uint i = start; i < end; ++i)
         flock(i);
 }
 
 
-#define SPFAC 2.0f
-#define FORLIM 0.1f
 
 void main(void) 
 {

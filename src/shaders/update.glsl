@@ -1,11 +1,11 @@
-#version 430 core
+//#version 430 core
+//#define RANGE 40
 
 layout (local_size_x = 1024) in;
 
 shared float minimum[1024];
 shared float maximum[1024];
 
-#define RANGE 40
 
 struct Boid{
     float posx;

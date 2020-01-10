@@ -11,7 +11,7 @@ Interface::Interface(SimulationEngine * _engine)
 void Interface::down(int key)
 {
     keymap[key] = true;
-    cout << "Key down: " << key << endl;
+    //cout << "Key down: " << key << endl;
 
     if (keymap[32]) // space
     {
@@ -22,7 +22,7 @@ void Interface::down(int key)
 void Interface::up(int key)
 {
     keymap[key] = false;
-    cout << "Key up: " << key << endl;
+    //cout << "Key up: " << key << endl;
 }
 
 void Interface::mouseDown(int _x, int _y)

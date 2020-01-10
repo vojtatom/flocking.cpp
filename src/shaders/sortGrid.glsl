@@ -1,8 +1,8 @@
-#version 430 core
+//#version 430 core
+//#define RANGE 40
 
 layout (local_size_x = 1024) in;
 
-#define RANGE 40
 
 //STRUCTS
 struct Boid{

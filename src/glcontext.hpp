@@ -47,6 +47,7 @@ private:
     GLuint loadCompileShader(const char *path, GLenum shaderType);
     GLuint createProgram(const char *path_vert_shader, const char *path_frag_shader);
     GLuint createProgram(const char *path_compute_shader);
+    string glslHeader();
     void initPrograms();
     void initBuffers();
     void drawBoxes();
@@ -68,6 +69,7 @@ private:
     float boidSize;
     int32_t treeMemoryLimit;
     int32_t treeNodeCount;
+    bool darkMode;
 
     //compute shader settings
     //GLuint vaoUpdating;

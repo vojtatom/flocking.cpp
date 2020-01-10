@@ -15,6 +15,12 @@ ostream & operator<<(ostream & os, const glm::vec3 & v)
     return os;
 }
 
+ostream & operator<<(ostream & os, const glm::uvec3 & v)
+{
+    os << v.x << " " << v.y << " " << v.z;
+    return os;
+}
+
 ostream & operator<<(ostream & os, const BoidContainer & agents){
     for (size_t i = 0; i < agents.size; i++)
     {

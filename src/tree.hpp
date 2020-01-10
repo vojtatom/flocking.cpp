@@ -5,7 +5,7 @@
 #include "box.hpp"
 #include "boid.hpp"
 
-#define CHILDPERNODE 16
+#define CHILDPERNODE 4
 #define SUBTREES 8
 
 

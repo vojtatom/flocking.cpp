@@ -5,6 +5,7 @@
 #include "glcontext.hpp"
 #include "environment.hpp"
 #include "interface.hpp"
+#include <chrono>
 
 
 class SimulationEngine
@@ -23,6 +24,20 @@ protected:
     void flockApply(Boid & me);
     void flockInit();
     void updateBoid(Boid & me);
+
+    void startTime()
+    {
+        timepoint = Clock::now();
+    };
+    
+    void stopTime()
+    {
+        auto endTime = Clock::now();
+        std::cout << "\rUpdate speed: " 
+        << std::chrono::duration_cast<std::chrono::milliseconds>(endTime - timepoint).count()
+        << " ms" << std::flush;
+    }
+
 
     friend class Interface;
 
@@ -54,6 +69,8 @@ protected:
     size_t viewCount;
 
     bool run;
+    typedef std::chrono::high_resolution_clock Clock;
+    std::chrono::system_clock::time_point timepoint;
 };
 
 

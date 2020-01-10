@@ -1,4 +1,6 @@
-#version 430 core
+//#version 430 core
+//#define SPFAC 2.0f
+//#define FORLIM 0.1f
 
 layout (local_size_x = 1024) in;
 
@@ -71,8 +73,6 @@ vec3 limit(vec3 v, float limit){
     return v;
 }
 
-#define SPFAC 2.0f
-#define FORLIM 0.1f
 
 void main(void) 
 {
