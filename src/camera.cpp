@@ -2,23 +2,23 @@
 #include <glm/ext.hpp>
 #include <iostream>
 #include "camera.hpp"
-#include "agent.hpp"
+#include "boid.hpp"
 #include "utils.hpp"
 
 using namespace std;
 
-#define DELTA 0.1f
+#define DELTA 0.05f
 
 Camera::Camera(glm::vec3 _pos, glm::vec3 _center, glm::vec3 _up)
-    : pos(_pos), center(_center), up(_up), sPos(_pos), sCenter(center), sUp(_up), fovy(45), aspect(1), near(1), far(1000)
+    : pos(_pos), center(_center), up(_up), sPos(_pos), sCenter(center), sUp(_up), fovy(45), aspect(1), fnear(1), ffar(10000)
 {
-    projection = glm::perspective(fovy, aspect, near, far);
+    projection = glm::perspective(fovy, aspect, fnear, ffar);
     view = glm::lookAt(pos, center, up);
 }
 
 void Camera::resize(int w, int h){
     aspect = float(w) / float(h);
-    projection = glm::perspective(fovy, aspect, near, far);
+    projection = glm::perspective(fovy, aspect, fnear, ffar);
 }
 
 void Camera::move(CameraMoveDirection dir, float delta){
@@ -32,6 +32,11 @@ void Camera::move(CameraMoveDirection dir, float delta){
     } 
 
     view = glm::lookAt(pos, center, up);
+}
+
+void Camera::set(float x, float y, float z)
+{
+    pos = glm::vec3(x, y, z);
 }
 
 void Camera::rotate(int deltaX, int deltaY) {
@@ -49,8 +54,24 @@ void Camera::rotate(int deltaX, int deltaY) {
     forw = m * glm::vec4(forw, 1);
     up = m * glm::vec4(up, 1);
     pos = center - forw;
+}
 
-    view = glm::lookAt(pos, center, up);
+void Camera::rotateDirect(float deltaX, float deltaY) {
+
+    float a_x = -deltaX * DELTA * 0.5; //x to radian?
+    float a_y = deltaY * DELTA * 0.5; //y to radian?
+
+    glm::vec3 forw = sCenter - sPos;
+    glm::vec3 axisX = glm::cross(sUp, forw);
+    glm::mat4 m = glm::mat4(1.0);
+
+    m = glm::rotate(m, a_x, sUp);
+    m = glm::rotate(m, a_y, axisX);
+
+    forw = m * glm::vec4(forw, 1);
+    up = sUp = m * glm::vec4(sUp, 1);
+    pos = sPos = sCenter - forw;
+    view = glm::lookAt(sPos, sCenter, sUp);
 }
 
 #define MAXSPEED 0.1f
@@ -64,7 +85,6 @@ void Camera::frame(){
     } else {
         sPos = pos, posMomentum = 0;
     }
-
 
     float a = angle(sUp, up);
     rotMomentum =  fmin(a, MAXSPEED * 3.14f);
@@ -87,5 +107,7 @@ void Camera::frame(){
 
     if (centerMomentum != 0 || rotMomentum != 0 || posMomentum != 0){
         view = glm::lookAt(sPos, sCenter, sUp);
+    } else {
+        //rotateDirect(0.1, 0.1);
     }
 }

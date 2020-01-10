@@ -1,6 +1,6 @@
 #include <iostream>
 #include <glm/glm.hpp>
-#include "agent.hpp"
+#include "boid.hpp"
 
 
 ostream & operator<<(ostream & os, const glm::vec4 & v)
@@ -15,10 +15,10 @@ ostream & operator<<(ostream & os, const glm::vec3 & v)
     return os;
 }
 
-ostream & operator<<(ostream & os, const AgentContainer & agents){
+ostream & operator<<(ostream & os, const BoidContainer & agents){
     for (size_t i = 0; i < agents.size; i++)
     {
-        os << "Agent " << agents.boids[i].position << "\n      ";
+        os << "Boid " << agents.boids[i].position << "\n      ";
         os << agents.boids[i].velocity << "\n";
     }
     return os;

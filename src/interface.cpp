@@ -1,7 +1,7 @@
 #include <glm/glm.hpp>
 #include <random>
 #include "engine.hpp"
-#include "agent.hpp"
+#include "boid.hpp"
 
 
 Interface::Interface(SimulationEngine * _engine)
@@ -12,6 +12,11 @@ void Interface::down(int key)
 {
     keymap[key] = true;
     cout << "Key down: " << key << endl;
+
+    if (keymap[32]) // space
+    {
+        engine->run = !engine->run;
+    }
 }
 
 void Interface::up(int key)
@@ -42,7 +47,7 @@ void Interface::mouseMove(int _x, int _y)
 
 void Interface::mouseWheel(int delta)
 {
-    deltaWheel += delta;
+    deltaWheel += delta * 10;
 }
 
 void Interface::resize(int w, int h)
@@ -59,6 +64,11 @@ void Interface::updateContext(){
     if (keymap['e'])
     {
         engine->context->camera.move(CameraMoveDirection::Z, -1.0);
+    }
+
+    if (keymap['t'])
+    {
+        engine->context->camera.set(0, 0, 100);
     }
 
     if (deltaX != 0 || deltaY != 0)

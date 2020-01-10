@@ -2,6 +2,8 @@
 cmake_minimum_required(VERSION 2.8.10)
 
 set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_PREFIX_PATH "./")
+set(GLEW_DIR "./")
 
 # Project name.
 set(NAME flocking)
@@ -71,6 +73,18 @@ include_directories (SYSTEM
 	${SGL_INCLUDE_DIR}
 	${GLUT_INCLUDE_DIR}
 )
+
+if(NOT CMAKE_BUILD_TYPE)
+  set(CMAKE_BUILD_TYPE Release)
+endif()
+
+add_definitions(-DNDEBUG)
+
+if(CMAKE_COMPILER_IS_GNUCXX)
+	set(CMAKE_CXX_FLAGS "-Wall -Wextra")
+	set(CMAKE_CXX_FLAGS_DEBUG "-g")
+endif(CMAKE_COMPILER_IS_GNUCXX)
+set(CMAKE_CXX_FLAGS_RELEASE "-O2")
 
 target_link_libraries (${NAME} ${GLUT_LIBRARIES} ${OPENGL_LIBRARIES} ${GLEW_LIBRARIES})
 

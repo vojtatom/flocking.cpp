@@ -2,8 +2,10 @@
 #include <GL/glut.h>
 #include <glm/vec2.hpp>
 #include <iostream>
+#include <cstdlib>
 #include "src/engine.hpp"
-#include "src/agent.hpp"
+#include "src/environment.hpp"
+#include "src/boid.hpp"
 
 using namespace std;
 
@@ -152,8 +154,37 @@ int main(int argc, char *argv[])
     }
     cout << "Using GLEW Version: " << glewGetString(GLEW_VERSION) << endl;
 
+
+    Environment * env = new Environment(argc, argv);
+
+    //read apptype
+    unsigned int apptype = 0;
+    if (argc > 1)
+        apptype = atoi(argv[1]);
+
+
     //simulation init
-    engine = new SimulationEngine(200, glm::vec3(-100, -100, -100), glm::vec3(100, 100, 100));
+    switch (apptype)
+    {
+    case 0:
+        engine = new EngineCPUBasic(env);
+        break;
+    case 1:
+        engine = new EngineCPUTree(env);
+        break;
+    case 2:
+        engine = new EngineGPUBasic(env);
+        break;
+    /*case 3:
+        engine = new EngineGPUTree(env);
+        break;*/
+    case 3:
+        engine = new EngineGPUGrid(env);
+        break;
+    default:
+        break;
+    }
+
 
     // Create main window and set callbacks
     glutTimerFunc(0, timer, 0);
@@ -166,7 +197,7 @@ int main(int argc, char *argv[])
     glutSetKeyRepeat(GLUT_KEY_REPEAT_OFF);
     glutMouseFunc(myMouse);
     glutMotionFunc(myMouseMove);
-    glutReshapeWindow( 800, 600);
+    glutReshapeWindow(800, 600);
 
     glutMainLoop();
     return 0;

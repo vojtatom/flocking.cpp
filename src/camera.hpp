@@ -14,7 +14,9 @@ struct Camera
 
     void resize(int w, int h);
     void move(CameraMoveDirection dir, float delta);
+    void set(float x, float y, float z);
     void rotate(int deltaX, int deltaY);
+    void rotateDirect(float deltaX, float deltaY);
     void frame();
 
     glm::vec3 pos;
@@ -34,6 +36,6 @@ struct Camera
 
     float fovy;
     float aspect;
-    float near;
-    float far;
+    float fnear;
+    float ffar;
 };
