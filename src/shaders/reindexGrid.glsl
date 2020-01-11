@@ -24,7 +24,7 @@ layout(std430, binding = 3) buffer indexBuffer
 
 //number of boids
 layout(location = 1) uniform uint size;
-layout(location = 2) uniform uvec3 gridSize;
+layout(location = 2) uniform uvec3 gridRes;
 
 void main(void) 
 {
@@ -39,7 +39,7 @@ void main(void)
         if (boidId == 0)
         {
             prevBoidCellID = 0;
-            indices[cellID] = boidId;   
+            indices[0] = 0;   
         } else 
             prevBoidCellID = boids[boidId - 1].id;
 
@@ -47,15 +47,15 @@ void main(void)
         if (cellID > prevBoidCellID)
         {
             //fill all previous unhabitated cells
-            for(uint i = cellID + 1; i >= prevBoidCellID + 1; --i)
-                indices[i - 1] = boidId;           
+            for(uint i = prevBoidCellID + 1; i <= cellID; ++i)
+                indices[i] = boidId;           
         }
 
         //last element, fill calls after last cell
         if (boidId == size - 1)
         {
-            uint lastCell = gridSize.x * gridSize.y * gridSize.z;
-            for(uint i = cellID; i < lastCell + 1; --i)
+            uint lastCell = gridRes.x * gridRes.y * gridRes.z;
+            for(uint i = cellID + 1; i < lastCell + 1; ++i)
                 indices[i] = boidId + 1;  
         }
     }

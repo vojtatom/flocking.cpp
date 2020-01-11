@@ -135,22 +135,5 @@ void main(void)
             counts[groupId * 2] = minimum[0];
             counts[groupId * 2 + 1] = maximum[0];
         }
-
-        if (localId < gl_NumWorkGroups.x && groupId == 0)
-        {
-            //copy to shared memory in the first work group
-            minimum[localId] = counts[localId * 2];
-            maximum[localId] = counts[localId * 2 + 1];
-            
-            //reduce
-            reduce(localId, gl_NumWorkGroups.x);
-
-            //write by the first invocation into buffer
-            if (localId == 0)
-            {
-                counts[0] = minimum[0];
-                counts[1] = maximum[0];
-            }
-        }
     }
 }

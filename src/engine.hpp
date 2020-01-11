@@ -33,9 +33,9 @@ protected:
     void stopTime()
     {
         auto endTime = Clock::now();
-        std::cout << "\rUpdate speed: " 
+        std::cout << "Update speed: " 
         << std::chrono::duration_cast<std::chrono::milliseconds>(endTime - timepoint).count()
-        << " ms" << std::flush;
+        << " ms" << std::endl;
     }
 
 

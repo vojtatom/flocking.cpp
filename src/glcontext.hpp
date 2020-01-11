@@ -85,6 +85,7 @@ private:
     Program agentProgram;
     Program boxProgram;
     Program updateBoidsProgram;
+    Program reduceProgram;
     Program naiveFlockProgram;
     Program treeFlockProgram;
     Program sortProgram;

@@ -41,5 +41,5 @@ void main() {
  	gl_Position = projection * view * vec4(rvert + position, 1.0);
 
 
-	colorVal = (clamp(colorValue, minColorValue, maxColorValue) - minColorValue) / (maxColorValue - minColorValue);
+	colorVal = (clamp(colorValue, minColorValue, maxColorValue) - minColorValue) / max(1, (maxColorValue - minColorValue));
 }

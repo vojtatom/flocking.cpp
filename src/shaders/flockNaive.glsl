@@ -102,7 +102,7 @@ void main(void)
             //GLSLBoid other = boidToGLSLBoid(boids[otherid]);
 
             vec3 opos = vec3(boids[otherid].pos[0], boids[otherid].pos[1], boids[otherid].pos[2]);
-            if (distance(me.pos, opos) < 40.0f)
+            if (distance(me.pos, opos) < RANGE)
             {
                 inrange++;
                 align += vec3(boids[otherid].vel[0], boids[otherid].vel[1], boids[otherid].vel[2]);

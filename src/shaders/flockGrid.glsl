@@ -11,7 +11,7 @@ struct Boid{
     float pos[3];
     float vel[3];
     float acc[3];
-    int   id;
+    uint   id;
     float countAround;
 };
 
@@ -19,7 +19,7 @@ struct GLSLBoid{
     vec3 pos;
     vec3 vel;
     vec3 acc;
-    int   id;
+    uint   id;
     float countAround;
 };
 
@@ -40,7 +40,7 @@ layout(location = 2) uniform uvec3 gridRes;
 
 
 //not really global since there is nothing like that in shaders...
-uint inrange = 0;
+float inrange = 0;
 uint viewCount = 0;
 vec3 align = vec3(0.f);
 vec3 cohesion = vec3(0.f);
@@ -103,13 +103,15 @@ void flock(uint boidIdx)
         return;
 
     vec3 otherPos = vec3(boids[boidIdx].pos[0], boids[boidIdx].pos[1], boids[boidIdx].pos[2]);
-    
-    if (distance(me.pos, otherPos) > RANGE)
+
+    if (distance(me.pos, otherPos) >= RANGE)
         return;
 
     vec3 otherVel = vec3(boids[boidIdx].vel[0], boids[boidIdx].vel[1], boids[boidIdx].vel[2]);
     
-    inrange++;
+
+    inrange += 1;
+    //finrange += 1.0f - dist / RANGE;
     align += otherVel;
     cohesion += otherPos;
     separation += normalize(me.pos - otherPos);
@@ -142,7 +144,6 @@ void traverseCell(uint x, uint y, uint z)
 void main(void) 
 {
     myId = gl_WorkGroupSize.x * gl_WorkGroupID.x + gl_LocalInvocationID.x;
-
 
     //valid boid
     if (myId < size)
@@ -210,7 +211,7 @@ void main(void)
             }
         }
 
-        me.countAround = float(inrange);
+        me.countAround = inrange;
         GLSLBoidToBuffer(me, myId);
     }
 

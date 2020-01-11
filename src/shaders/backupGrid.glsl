@@ -58,7 +58,7 @@ void main(void)
         //hstep /= uint(pow(2, iteration));
         uint elemID, oelemID;
 
-        if (hstep > gl_WorkGroupSize.x)
+        if (hstep >= gl_WorkGroupSize.x)
         {
             elemID = id + (id / hstep) * hstep;
             oelemID = elemID + hstep;
@@ -79,28 +79,37 @@ void main(void)
             lboids[locCopyId] = boids[copyId];
             lboids[locCopyId + 1] = boids[copyId + 1];
             barrier();
+            //memoryBarrierShared();
 
+            //elemID = id + (id / hstep) * hstep;
+            //oelemID = elemID + hstep;
             elemID = locId + (locId / hstep) * hstep;
             oelemID = elemID + hstep;
 
             while(hstep > 0)
             {
                 
+                //bool comp = boids[elemID].id < boids[oelemID].id;
                 bool comp = lboids[elemID].id < lboids[oelemID].id;
                 
                 //negate result if neccesary
                 if (asc)
                     comp = !comp;
+                //comp = (!asc && comp) || (asc && !comp);
 
                 if (comp)
                     localSwap(elemID, oelemID);
+                    //swap(elemID, oelemID);
                 
                 //iterate 
                 hstep >>= 1;
 
+                //elemID = id + (id / hstep) * hstep;
+                //oelemID = elemID + hstep;
                 elemID = locId + (locId / hstep) * hstep;
                 oelemID = elemID + hstep;
                 barrier();
+                //memoryBarrierShared();
             }
 
             boids[copyId] = lboids[locCopyId];
@@ -112,7 +121,8 @@ void main(void)
 
 }
 
-/*void main(void) 
+//buggz main
+void main(void) 
 {
     uint id = gl_WorkGroupSize.x * gl_WorkGroupID.x + gl_LocalInvocationID.x;
     //uint locId = gl_LocalInvocationID.x;
@@ -127,7 +137,7 @@ void main(void)
         //hstep /= uint(pow(2, iteration));
         uint elemID, oelemID;
 
-        if (hstep >= gl_WorkGroupSize.x)
+        if (hstep > gl_WorkGroupSize.x)
         {
             elemID = id + (id / hstep) * hstep;
             oelemID = elemID + hstep;
@@ -186,4 +196,4 @@ void main(void)
 
     }
 
-}*/
+}

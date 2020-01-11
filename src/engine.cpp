@@ -361,6 +361,8 @@ EngineGPUGrid::~EngineGPUGrid()
 
 void EngineGPUGrid::draw()
 {
+    if (!run)
+        return;
     //update values
     startTime();
     update();
@@ -373,8 +375,6 @@ void EngineGPUGrid::draw()
 
 void EngineGPUGrid::update()
 {
-    if (!run)
-        return;
 
     context->computeShaderUpdateBoids();
     context->computeShaderSortBoids();

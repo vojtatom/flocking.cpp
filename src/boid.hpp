@@ -14,7 +14,7 @@ struct Boid{
 };
 
 
-#define HISTORY 20
+#define HISTORY 100
 
 struct BoidContainer
 {
@@ -38,8 +38,8 @@ struct BoidContainer
         partialSumMin -= oldMin, partialSumMax -= oldMax;
         partialSumMin += minCount, partialSumMax += maxCount;
         
-        boidMaxCount = partialSumMax / float(HISTORY);
-        boidMinCount = partialSumMin / float(HISTORY),
+        boidMaxCount = partialSumMax / float(HISTORY + 1);
+        boidMinCount = partialSumMin / float(HISTORY + 1),
         //boidMinCount = boidMaxCount - boidMaxCount / 2.0f;
 
         statIdx = (statIdx + 1) % HISTORY;
