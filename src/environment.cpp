@@ -40,14 +40,14 @@ Environment::Environment(int argc, char *argv[])
     cout << "Enviroment settings:" << endl;
 	cout << path << endl;
 
-    string envfile;
+    string envfile = "env.txt";
     if (argc > 1){
         envfile = argv[1];
     }
 
     //read environment file
     ifstream env(path + envfile);
-    if (env.good())
+    if (env.is_open())
     {
         string title, type;
 
@@ -58,6 +58,12 @@ Environment::Environment(int argc, char *argv[])
         {
             env >> title;
 
+            if (env.bad())
+            {
+                addRecord("appType", -1);
+                return;
+            }
+
             if (title[0] == '#')
             {
                 //comment, skip line
@@ -66,6 +72,13 @@ Environment::Environment(int argc, char *argv[])
                 env >> type;
 
                 cout << title << " " << type << " " << flush;
+            
+                if (env.bad())
+                {
+                    cout << "Error reading environment file, last read: " << title << " " << type << endl;
+                    addRecord("appType", -1);
+                    return;
+                }
 
                 if (type == "int")
                 {
@@ -91,16 +104,10 @@ Environment::Environment(int argc, char *argv[])
                 }
             }
 
-            if (env.bad())
-            {
-                cout << "Error reading environment file, last read: " << title << " " << type << endl;
-                //todo quit better
-                //exit(1);
-                addRecord("appType", -1);
-                return;
-            }
         }
-
+    } else {
+        addRecord("appType", -1);
+        return;
     }
 
     //read commanline args
@@ -126,7 +133,7 @@ Environment::Environment(int argc, char *argv[])
 }
 
 
-void Environment::addRecord(unsigned char type, const string & name, const string & initValue)
+/*void Environment::addRecord(unsigned char type, const string & name, const string & initValue)
 {
     switch (type)
     {
@@ -139,7 +146,7 @@ void Environment::addRecord(unsigned char type, const string & name, const strin
     default:
         break;
     }
-}
+}*/
 
 void Environment::addRecord(const string & name, const int32_t & initValue)
 {

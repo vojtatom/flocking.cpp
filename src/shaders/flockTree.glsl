@@ -78,6 +78,7 @@ void GLSLBoidToBuffer(GLSLBoid boid, uint id)
     boids[id].countAround = boid.countAround;
 }
 
+/** http://www.neilmendoza.com/glsl-rotation-about-an-arbitrary-axis/ */
 mat4 rotationMatrix(vec3 axis, float angle)
 {
     axis = normalize(axis);

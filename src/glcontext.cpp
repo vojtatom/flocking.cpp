@@ -206,22 +206,24 @@ void Context::initPrograms()
     nf.unif["size"] = glGetUniformLocation(nf.id, "size");
 
     //tree flocking boids
-    Program &tf = treeFlockProgram;
+    /*Program &tf = treeFlockProgram;
     tf.id = createProgram("src/shaders/flockTree.glsl");
-    tf.unif["size"] = glGetUniformLocation(tf.id, "size");
+    tf.unif["size"] = glGetUniformLocation(tf.id, "size");*/
 
-    //grid flocking boids
+    //grid sort boids
     Program &sp = sortProgram;
     sp.id = createProgram("src/shaders/sortGrid.glsl");
     sp.unif["size"] = glGetUniformLocation(sp.id, "size");
     sp.unif["segmentSize"] = glGetUniformLocation(sp.id, "segmentSize");
     sp.unif["iteration"] = glGetUniformLocation(sp.id, "iteration");
 
+    //grid reindex cells
     Program &ri = gridReindexProgram;
     ri.id = createProgram("src/shaders/reindexGrid.glsl");
     ri.unif["size"] = glGetUniformLocation(ri.id, "size");
     ri.unif["gridRes"] = glGetUniformLocation(ri.id, "gridRes");
 
+    //grid flocking 
     Program &fg = gridFlockProgram;
     fg.id = createProgram("src/shaders/flockGrid.glsl");
     fg.unif["size"] = glGetUniformLocation(fg.id, "size");
@@ -379,35 +381,6 @@ void Context::drawBoids()
 {
     glBindVertexArray(vao);
 
-    /*Boid *boids = (Boid *)glMapNamedBufferRange(bufAgents, 0, agents->size * sizeof(Boid), GL_MAP_READ_BIT);
-    glm::uvec3 gridRes = env->getVec("grid");
-    for (size_t i = agents->size / 2; i < agents->size / 2 + 1; i++){
-        unsigned int id = boids[i].id;
-        unsigned int gridXY = gridRes.x * gridRes.y;
-        unsigned int z = id / gridXY;
-        unsigned int znext = (z + 1 + gridRes.z) % gridRes.z;
-        unsigned int zprev = (z - 1 + gridRes.z) % gridRes.z;
-        unsigned int tmpy = id - (z * gridXY);
-        unsigned int y = tmpy / gridRes.x;
-        unsigned int ynext = (y + 1 + gridRes.y) % gridRes.y;
-        unsigned int yprev = (y - 1 + gridRes.y) % gridRes.y;
-        unsigned int x = tmpy - y * gridRes.x;
-        unsigned int xnext = (x + 1 + gridRes.x) % gridRes.x;
-        unsigned int xprev = (x - 1 + gridRes.x) % gridRes.x;
-        
-        cout << "prev" << boids[i - 1].position << " " << boids[i - 1].id << endl;
-        cout << i << endl;
-        cout << boids[i].id << " " << boids[i].position << endl;
-        cout << x << " " << y << " " << " " << z << endl;
-        cout << xprev << " " << yprev << " " << " " << zprev << endl;
-        cout << xnext << " " << ynext << " " << " " << znext << endl;
-
-
-
-    }
-    cout << endl;
-    glUnmapNamedBuffer(bufAgents);*/
-
     //bind uniforms
     glUseProgram(agentProgram.id);
     glUniformMatrix4fv(agentProgram.unif["view"], 1, GL_FALSE, glm::value_ptr(camera.view));
@@ -472,8 +445,29 @@ Context::Context(BoidContainer *_agents, Environment *_env)
 
 Context::~Context()
 {
-    glDeleteBuffers(1, &(bufAgents));
-    glDeleteBuffers(1, &(bufGeometry));
+    cout << "Deallocating gl context" << endl;
+    glDeleteBuffers(1, &bufAgents);
+    glDeleteBuffers(1, &bufGeometry);
+    glDeleteBuffers(1, &ebufGeometry);
+    glDeleteBuffers(1, &reductionBuffer);
+    glDeleteBuffers(1, &gridIndicesBuffer);
+    glDeleteVertexArrays(1, &vao);
+
+    glDeleteBuffers(1, &ebufBoxGeometry);
+    glDeleteBuffers(1, &bufBoxGeometry);
+    glDeleteBuffers(1, &bufTree);
+    glDeleteVertexArrays(1, &vaoBox);
+
+    glDeleteProgram(agentProgram.id);
+    glDeleteProgram(boxProgram.id);
+    glDeleteProgram(updateBoidsProgram.id);
+    glDeleteProgram(reduceProgram.id);
+    glDeleteProgram(naiveFlockProgram.id);
+    //glDeleteProgram(treeFlockProgram.id);
+    glDeleteProgram(sortProgram.id);
+    glDeleteProgram(gridReindexProgram.id);
+    glDeleteProgram(gridFlockProgram.id);
+    getGLError("deallocation");
 }
 
 //-----------------------------------------------------
@@ -567,24 +561,21 @@ void Context::computeShaderUpdateBoids()
     glDispatchCompute(groups, 1, 1);
     glMemoryBarrier(GL_ALL_BARRIER_BITS);
 
-    /*//COPY min max
-    float *limits = (float *)glMapNamedBufferRange(reductionBuffer, 0, groups * 2 * sizeof(float), GL_MAP_READ_BIT);
-    for (size_t i = 0; i < groups * 2; i++)
-        cout << limits[i] << " " << flush;
-    cout << endl;
-    glUnmapNamedBuffer(reductionBuffer);*/
-
     glUseProgram(reduceProgram.id);
     glDispatchCompute(1, 1, 1);
     glMemoryBarrier(GL_ALL_BARRIER_BITS);
 
     //COPY min max
-    float *limits = (float *)glMapNamedBufferRange(reductionBuffer, 0, 2 * sizeof(float), GL_MAP_READ_BIT);
-    //cout << limits[0] << " " << limits[1] << endl;
+    glBindBuffer(GL_SHADER_STORAGE_BUFFER, reductionBuffer);
+    float *limits = (float *)glMapBufferRange(GL_SHADER_STORAGE_BUFFER, 0, 2 * sizeof(float), GL_MAP_READ_BIT);
+    //or alternatively
+    //float *limits = (float *)glMapNamedBufferRange(reductionBuffer, 0, 2 * sizeof(float), GL_MAP_READ_BIT);
+   
     agents->updateStats(limits[0], limits[1]);
-    //cout << agents->boidMaxCount << " " << limits[1] << endl;
 
-    glUnmapNamedBuffer(reductionBuffer);
+    glUnmapBuffer(GL_SHADER_STORAGE_BUFFER);
+    //or alternatively
+    //glUnmapNamedBuffer(reductionBuffer);
 
     getGLError("gpu update");
 }
@@ -636,19 +627,6 @@ void Context::computeShaderSortBoids()
             glDispatchCompute(groups, 1, 1);
             glMemoryBarrier(GL_ALL_BARRIER_BITS);
 
-            /*cout << "boids" << endl;
-            int zeroes = 0;
-            Boid * b = (Boid *) glMapNamedBufferRange(bufAgents, 0, agents->size * sizeof(Boid), GL_MAP_READ_BIT);
-            for (size_t i = 0; i < agents->size; i++)
-            {
-                cout << b[i].id << " " << flush;
-                if (b[i].id == 0)
-                    zeroes++;
-            }
-            cout << endl;
-            cout << zeroes << endl;
-            glUnmapNamedBuffer(bufAgents);*/
-
             sizeOfIndependentBlock = segmentSize / int32_t(pow(2, iteration));
             iteration++;
 
@@ -660,32 +638,11 @@ void Context::computeShaderSortBoids()
     } while (segmentSize <= agents->size);
 
 
-
-
-
-
-
-
     //update indices in buffer
     glUseProgram(gridReindexProgram.id);
     glUniform1ui(gridReindexProgram.unif["size"], agents->size);
     glDispatchCompute(groups, 1, 1);
     glMemoryBarrier(GL_ALL_BARRIER_BITS);
-
-
-
-
-    /*cout << "grid" << endl;
-    glm::uvec3 gridRes = env->getVec("grid");
-    uint32_t gridSize = gridRes.x * gridRes.y * gridRes.z;
-    unsigned int * indices = (unsigned int *)glMapNamedBufferRange(gridIndicesBuffer, 0, (gridSize + 1) * sizeof(unsigned int ), GL_MAP_READ_BIT);
-    for (size_t i = 0; i < gridSize + 1; i++)
-        cout << indices[i] << " " << flush;
-    cout << endl;
-    glUnmapNamedBuffer(gridIndicesBuffer);*/
-
-
-
 
     getGLError("gpu sort");
     //exit(0);

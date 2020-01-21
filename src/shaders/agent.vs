@@ -17,6 +17,7 @@ out float colorVal;
  * The returned matrix can rotate vector (1, 0, 0)
  * into the desired setup. Used to rotate glyphs according
  * to vecotr field
+ * http://www.neilmendoza.com/glsl-rotation-about-an-arbitrary-axis/
  */
 mat4 getRotationMat(vec3 vector)
 {

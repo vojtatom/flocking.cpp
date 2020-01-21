@@ -1,6 +1,7 @@
 #include <glm/glm.hpp>
 #include <glm/ext.hpp>
 #include <iostream>
+#include <algorithm>
 #include "camera.hpp"
 #include "boid.hpp"
 #include "utils.hpp"
@@ -21,13 +22,24 @@ void Camera::resize(int w, int h){
     projection = glm::perspective(fovy, aspect, fnear, ffar);
 }
 
+#define MINDIST 20
+
 void Camera::move(CameraMoveDirection dir, float delta){
-    glm::vec3 forw = glm::normalize(center - pos);
+    glm::vec3 dvec = center - pos;
+    float dist = glm::length(dvec);
+    glm::vec3 forw = glm::normalize(dvec);
+
+    //prevent dist to be 0
+    if (dist <= MINDIST && delta > 0)
+        return;
 
     switch(dir){
         case CameraMoveDirection::Z:
+
             pos += DELTA * forw * delta;
             //center += DELTA * forw * delta;
+            break;
+        default:
             break;
     } 
 

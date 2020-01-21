@@ -12,6 +12,8 @@
 
 using namespace std;
 
+static Timer timer = Timer();
+
 SimulationEngine::SimulationEngine(Environment * _env)
     : interface(this), env(_env),
     run(true)
@@ -73,9 +75,10 @@ void SimulationEngine::flockIndividual(Boid & me, Boid & other)
 {
     float dist = glm::length(me.position - other.position);
 
-    align += other.velocity, alignCount++;
-    cohesion += other.position, cohesCount++;
-    separation += (me.position - other.position) / dist, separCount++;
+    align += other.velocity;
+    cohesion += other.position;
+    separation += (me.position - other.position) / dist;
+    flockingCount++;
 
     glm::vec3 tmp = other.position - me.position;
     float ang = angle(me.velocity, tmp);
@@ -84,25 +87,21 @@ void SimulationEngine::flockIndividual(Boid & me, Boid & other)
         view = glm::rotate(view, -ang * ANGLEDELTA, glm::cross(me.velocity, tmp));
         viewCount++;
     }
-    
+
 }
 
 void SimulationEngine::flockApply(Boid & me)
 {
     //alignment
-    if (alignCount > 0)
-        me.acceleration += limit(glm::normalize(align / float(alignCount)) * 
+    if (flockingCount > 0)
+    {
+        me.acceleration += limit(glm::normalize(align) * 
                            speedFactor - me.velocity, forceLimit);
-
-    //cohesion
-    if (cohesCount > 0)
-        me.acceleration += limit(glm::normalize(cohesion / float(cohesCount) - me.position) * 
+        me.acceleration += limit(glm::normalize(cohesion / float(flockingCount) - me.position) * 
                            speedFactor - me.velocity, forceLimit);
-
-    //separation
-    if (separCount > 0)
-        me.acceleration += limit(glm::normalize(separation / float(separCount)) * 
+        me.acceleration += limit(glm::normalize(separation) * 
                            speedFactor - me.velocity, forceLimit);
+    }
 
     //view
     if (viewCount > 0)
@@ -111,9 +110,9 @@ void SimulationEngine::flockApply(Boid & me)
         me.acceleration += limit(glm::normalize(tmp) * speedFactor - me.velocity, forceLimit);
     }
 
-    me.countAround = viewCount;
-    agents->boidMaxCount = max((float) viewCount, agents->boidMaxCount);
-    agents->boidMinCount = min((float) viewCount, agents->boidMinCount);
+    me.countAround = flockingCount;
+    agents->boidMaxCount = max((float) flockingCount, agents->boidMaxCount);
+    agents->boidMinCount = min((float) flockingCount, agents->boidMinCount);
 }
 
 void SimulationEngine::flockInit()
@@ -122,9 +121,7 @@ void SimulationEngine::flockInit()
     cohesion = glm::vec3(0.0f);
     separation = glm::vec3(0.0f);
     view = glm::mat4(1.0);
-    alignCount = 0;
-    cohesCount = 0;
-    separCount = 0;
+    flockingCount = 0;
     viewCount = 0;
 }
 
@@ -151,7 +148,7 @@ EngineCPUBasic::~EngineCPUBasic()
 
 void EngineCPUBasic::draw()
 {
-    startTime();
+    timer.startTime();
     //update values
     update();
     context->setupBoids();
@@ -159,7 +156,7 @@ void EngineCPUBasic::draw()
 
     //handle UI
     interface.updateContext();
-    stopTime();
+    timer.stopTime();
 }
 
 void EngineCPUBasic::update()
@@ -214,7 +211,7 @@ EngineCPUTree::~EngineCPUTree()
 void EngineCPUTree::draw()
 {
     //update values
-    startTime();
+    timer.startTime();
     update();
     context->setupBoids();
     context->setupTree();
@@ -223,7 +220,7 @@ void EngineCPUTree::draw()
 
     //handle UI
     interface.updateContext();
-    stopTime();
+    timer.stopTime();
 }
 
 void EngineCPUTree::update()
@@ -283,13 +280,13 @@ EngineGPUBasic::~EngineGPUBasic()
 void EngineGPUBasic::draw()
 {
     //update values
-    startTime();
+    timer.startTime();
     update();
     context->draw();
 
     //handle UI
     interface.updateContext();
-    stopTime();
+    timer.stopTime();
 }
 
 void EngineGPUBasic::update()
@@ -361,20 +358,20 @@ EngineGPUGrid::~EngineGPUGrid()
 
 void EngineGPUGrid::draw()
 {
-    if (!run)
-        return;
     //update values
-    startTime();
+    timer.startTime();
     update();
     context->draw();
 
     //handle UI
     interface.updateContext();
-    stopTime();
+    timer.stopTime();
 }
 
 void EngineGPUGrid::update()
 {
+    if (!run)
+        return;
 
     context->computeShaderUpdateBoids();
     context->computeShaderSortBoids();

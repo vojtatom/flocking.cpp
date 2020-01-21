@@ -1,1573 +1,0 @@
-Using GLEW Version: 2.0.0
-Enviroment settings:
-./
-appType int 1
-boidCount int 11
-spaceLow vec3 -1000 -1000 -1000
-spaceHigh vec3 1000 1000 1000
-dark int 1
-flockingZone float 20
-speedFactor float 1
-forceLimit float 0.1
-treeMemoryLimit int 4098
-boidSize float 2
-boidSize float 2
-grid50 50 50
-OPENGL INFO
-Max work group size  1536 1024 64
-Max work group count 1536 1024 64
-Max invocations      1536
-Using 16 x 1024 invocations
-Boids 16384
-loading src/shaders/agent.vs
-Compilation OK
-loading src/shaders/agent.fs
-Compilation OK
-Linking OK
-loading src/shaders/box.vs
-Compilation OK
-loading src/shaders/box.fs
-Compilation OK
-Linking OK
-loading src/shaders/update.glsl
-Compilation OK
-Linking OK
-loading src/shaders/reduce.glsl
-Compilation OK
-Linking OK
-loading src/shaders/flockNaive.glsl
-Compilation OK
-Linking OK
-loading src/shaders/flockTree.glsl
-Compilation OK
-Linking OK
-loading src/shaders/sortGrid.glsl
-Compilation OK
-Linking OK
-loading src/shaders/reindexGrid.glsl
-Compilation OK
-Linking OK
-loading src/shaders/flockGrid.glsl
-Compilation OK
-Linking OK
-0 0
-0 0
-Update speed: 68 ms0 2
-0.019802 2
-Update speed: 1 ms0 2
-0.039604 2
-Update speed: 0 ms0 2
-0.0594059 2
-Update speed: 1 ms0 3
-0.0891089 3
-Update speed: 1 ms0 2
-0.108911 2
-Update speed: 2 ms0 2
-0.128713 2
-Update speed: 3 ms0 3
-0.158416 3
-Update speed: 3 ms0 3
-0.188119 3
-Update speed: 4 ms0 3
-0.217822 3
-Update speed: 4 ms0 3
-0.247525 3
-Update speed: 5 ms0 3
-0.277228 3
-Update speed: 5 ms0 3
-0.306931 3
-Update speed: 6 ms0 3
-0.336634 3
-Update speed: 8 ms0 3
-0.366337 3
-Update speed: 8 ms0 3
-0.39604 3
-Update speed: 8 ms0 3
-0.425743 3
-Update speed: 9 ms0 3
-0.455446 3
-Update speed: 9 ms0 3
-0.485149 3
-Update speed: 9 ms0 3
-0.514852 3
-Update speed: 10 ms0 3
-0.544554 3
-Update speed: 10 ms0 3
-0.574257 3
-Update speed: 11 ms0 3
-0.60396 3
-Update speed: 12 ms0 3
-0.633663 3
-Update speed: 12 ms0 3
-0.663366 3
-Update speed: 13 ms0 3
-0.693069 3
-Update speed: 14 ms0 3
-0.722772 3
-Update speed: 14 ms0 3
-0.752475 3
-Update speed: 15 ms0 3
-0.782178 3
-Update speed: 16 ms0 3
-0.811881 3
-Update speed: 16 ms0 3
-0.841584 3
-Update speed: 16 ms0 3
-0.871287 3
-Update speed: 16 ms0 3
-0.90099 3
-Update speed: 16 ms0 3
-0.930693 3
-Update speed: 16 ms0 3
-0.960396 3
-Update speed: 16 ms0 3
-0.990099 3
-Update speed: 16 ms0 3
-1.0198 3
-Update speed: 16 ms0 3
-1.0495 3
-Update speed: 16 ms0 3
-1.07921 3
-Update speed: 16 ms0 3
-1.10891 3
-Update speed: 16 ms0 3
-1.13861 3
-Update speed: 16 ms0 4
-1.17822 4
-Update speed: 16 ms0 4
-1.21782 4
-Update speed: 16 ms0 4
-1.25743 4
-Update speed: 16 ms0 4
-1.29703 4
-Update speed: 16 ms0 4
-1.33663 4
-Update speed: 16 ms0 4
-1.37624 4
-Update speed: 16 ms0 4
-1.41584 4
-Update speed: 16 ms0 4
-1.45545 4
-Update speed: 15 ms0 4
-1.49505 4
-Update speed: 15 ms0 4
-1.53465 4
-Update speed: 16 ms0 4
-1.57426 4
-Update speed: 16 ms0 4
-1.61386 4
-Update speed: 16 ms0 4
-1.65347 4
-Update speed: 16 ms0 4
-1.69307 4
-Update speed: 15 ms0 4
-1.73267 4
-Update speed: 16 ms0 4
-1.77228 4
-Update speed: 16 ms0 4
-1.81188 4
-Update speed: 16 ms0 4
-1.85149 4
-Update speed: 17 ms0 4
-1.89109 4
-Update speed: 10 ms0 4
-1.93069 4
-Update speed: 10 ms0 4
-1.9703 4
-Update speed: 10 ms0 4
-2.0099 4
-Update speed: 11 ms0 4
-2.0495 4
-Update speed: 12 ms0 4
-2.08911 4
-Update speed: 12 ms0 4
-2.12871 4
-Update speed: 13 ms0 4
-2.16832 4
-Update speed: 13 ms0 4
-2.20792 4
-Update speed: 13 ms0 4
-2.24752 4
-Update speed: 14 ms0 4
-2.28713 4
-Update speed: 15 ms0 4
-2.32673 4
-Update speed: 15 ms0 4
-2.36634 4
-Update speed: 16 ms0 4
-2.40594 4
-Update speed: 16 ms0 4
-2.44554 4
-Update speed: 16 ms0 4
-2.48515 4
-Update speed: 16 ms0 4
-2.52475 4
-Update speed: 16 ms0 4
-2.56436 4
-Update speed: 16 ms0 4
-2.60396 4
-Update speed: 16 ms0 4
-2.64356 4
-Update speed: 16 ms0 4
-2.68317 4
-Update speed: 16 ms0 4
-2.72277 4
-Update speed: 16 ms0 4
-2.76238 4
-Update speed: 16 ms0 4
-2.80198 4
-Update speed: 16 ms0 4
-2.84158 4
-Update speed: 16 ms0 4
-2.88119 4
-Update speed: 16 ms0 4
-2.92079 4
-Update speed: 16 ms0 4
-2.9604 4
-Update speed: 16 ms0 4
-3 4
-Update speed: 16 ms0 4
-3.0396 4
-Update speed: 16 ms0 4
-3.07921 4
-Update speed: 16 ms0 4
-3.11881 4
-Update speed: 16 ms0 4
-3.15842 4
-Update speed: 16 ms0 4
-3.19802 4
-Update speed: 16 ms0 4
-3.23762 4
-Update speed: 16 ms0 4
-3.27723 4
-Update speed: 16 ms0 4
-3.31683 4
-Update speed: 16 ms0 4
-3.35644 4
-Update speed: 16 ms0 4
-3.39604 4
-Update speed: 16 ms0 4
-3.43564 4
-Update speed: 16 ms0 4
-3.47525 4
-Update speed: 16 ms0 4
-3.51485 4
-Update speed: 16 ms0 4
-3.53465 4
-Update speed: 16 ms0 4
-3.55446 4
-Update speed: 16 ms0 4
-3.57426 4
-Update speed: 16 ms0 4
-3.58416 4
-Update speed: 16 ms0 5
-3.61386 5
-Update speed: 16 ms0 5
-3.64356 5
-Update speed: 16 ms0 5
-3.66337 5
-Update speed: 16 ms0 5
-3.68317 5
-Update speed: 16 ms0 5
-3.70297 5
-Update speed: 16 ms0 5
-3.72277 5
-Update speed: 16 ms0 5
-3.74257 5
-Update speed: 16 ms0 5
-3.76238 5
-Update speed: 16 ms0 5
-3.78218 5
-Update speed: 16 ms0 5
-3.80198 5
-Update speed: 16 ms0 5
-3.82178 5
-Update speed: 16 ms0 5
-3.84158 5
-Update speed: 16 ms0 5
-3.86139 5
-Update speed: 16 ms0 5
-3.88119 5
-Update speed: 16 ms0 5
-3.90099 5
-Update speed: 16 ms0 5
-3.92079 5
-Update speed: 16 ms0 5
-3.94059 5
-Update speed: 16 ms0 5
-3.9604 5
-Update speed: 16 ms0 5
-3.9802 5
-Update speed: 16 ms0 5
-4 5
-Update speed: 16 ms0 5
-4.0198 5
-Update speed: 16 ms0 5
-4.0396 5
-Update speed: 16 ms0 5
-4.05941 5
-Update speed: 16 ms0 5
-4.07921 5
-Update speed: 16 ms0 5
-4.09901 5
-Update speed: 16 ms0 5
-4.11881 5
-Update speed: 16 ms0 5
-4.13861 5
-Update speed: 16 ms0 5
-4.15842 5
-Update speed: 16 ms0 5
-4.17822 5
-Update speed: 16 ms0 5
-4.19802 5
-Update speed: 16 ms0 5
-4.21782 5
-Update speed: 16 ms0 5
-4.23762 5
-Update speed: 16 ms0 5
-4.25743 5
-Update speed: 16 ms0 5
-4.27723 5
-Update speed: 16 ms0 5
-4.29703 5
-Update speed: 16 ms0 5
-4.31683 5
-Update speed: 16 ms0 5
-4.32673 5
-Update speed: 16 ms0 5
-4.33663 5
-Update speed: 16 ms0 5
-4.34653 5
-Update speed: 16 ms0 5
-4.35644 5
-Update speed: 16 ms0 5
-4.36634 5
-Update speed: 16 ms0 5
-4.37624 5
-Update speed: 16 ms0 5
-4.38614 5
-Update speed: 16 ms0 5
-4.39604 5
-Update speed: 16 ms0 5
-4.40594 5
-Update speed: 16 ms0 5
-4.41584 5
-Update speed: 16 ms0 5
-4.42574 5
-Update speed: 16 ms0 5
-4.43564 5
-Update speed: 16 ms0 5
-4.44554 5
-Update speed: 16 ms0 5
-4.45545 5
-Update speed: 16 ms0 5
-4.46535 5
-Update speed: 16 ms0 5
-4.47525 5
-Update speed: 16 ms0 5
-4.48515 5
-Update speed: 16 ms0 5
-4.49505 5
-Update speed: 16 ms0 5
-4.50495 5
-Update speed: 16 ms0 5
-4.51485 5
-Update speed: 16 ms0 5
-4.52475 5
-Update speed: 16 ms0 5
-4.53465 5
-Update speed: 16 ms0 5
-4.54455 5
-Update speed: 16 ms0 5
-4.55446 5
-Update speed: 16 ms0 5
-4.56436 5
-Update speed: 16 ms0 5
-4.57426 5
-Update speed: 16 ms0 5
-4.58416 5
-Update speed: 16 ms0 5
-4.59406 5
-Update speed: 16 ms0 5
-4.60396 5
-Update speed: 16 ms0 5
-4.61386 5
-Update speed: 16 ms0 5
-4.62376 5
-Update speed: 16 ms0 5
-4.63366 5
-Update speed: 16 ms0 5
-4.64356 5
-Update speed: 16 ms0 5
-4.65347 5
-Update speed: 16 ms0 5
-4.66337 5
-Update speed: 16 ms0 5
-4.67327 5
-Update speed: 16 ms0 5
-4.68317 5
-Update speed: 16 ms0 6
-4.70297 6
-Update speed: 16 ms0 6
-4.72277 6
-Update speed: 16 ms0 6
-4.74257 6
-Update speed: 16 ms0 6
-4.76238 6
-Update speed: 16 ms0 6
-4.78218 6
-Update speed: 16 ms0 6
-4.80198 6
-Update speed: 16 ms0 6
-4.82178 6
-Update speed: 16 ms0 6
-4.84158 6
-Update speed: 16 ms0 6
-4.86139 6
-Update speed: 16 ms0 7
-4.89109 7
-Update speed: 16 ms0 7
-4.92079 7
-Update speed: 16 ms0 7
-4.9505 7
-Update speed: 16 ms0 7
-4.9802 7
-Update speed: 16 ms0 7
-5.0099 7
-Update speed: 16 ms0 7
-5.0396 7
-Update speed: 16 ms0 7
-5.06931 7
-Update speed: 16 ms0 7
-5.09901 7
-Update speed: 16 ms0 7
-5.12871 7
-Update speed: 16 ms0 7
-5.15842 7
-Update speed: 16 ms0 7
-5.18812 7
-Update speed: 16 ms0 7
-5.21782 7
-Update speed: 16 ms0 7
-5.24752 7
-Update speed: 16 ms0 7
-5.27723 7
-Update speed: 16 ms0 7
-5.30693 7
-Update speed: 16 ms0 7
-5.33663 7
-Update speed: 16 ms0 7
-5.36634 7
-Update speed: 16 ms0 7
-5.39604 7
-Update speed: 16 ms0 7
-5.41584 7
-Update speed: 16 ms0 7
-5.43564 7
-Update speed: 16 ms0 7
-5.45545 7
-Update speed: 16 ms0 7
-5.47525 7
-Update speed: 16 ms0 7
-5.49505 7
-Update speed: 16 ms0 7
-5.51485 7
-Update speed: 16 ms0 7
-5.53465 7
-Update speed: 16 ms0 7
-5.55446 7
-Update speed: 16 ms0 7
-5.57426 7
-Update speed: 16 ms0 7
-5.59406 7
-Update speed: 16 ms0 7
-5.61386 7
-Update speed: 16 ms0 7
-5.63366 7
-Update speed: 16 ms0 7
-5.65347 7
-Update speed: 16 ms0 6
-5.66337 6
-Update speed: 16 ms0 6
-5.67327 6
-Update speed: 16 ms0 6
-5.68317 6
-Update speed: 16 ms0 6
-5.69307 6
-Update speed: 16 ms0 6
-5.70297 6
-Update speed: 16 ms0 6
-5.71287 6
-Update speed: 16 ms0 6
-5.72277 6
-Update speed: 16 ms0 6
-5.73267 6
-Update speed: 16 ms0 6
-5.74257 6
-Update speed: 16 ms0 6
-5.75248 6
-Update speed: 16 ms0 6
-5.76238 6
-Update speed: 16 ms0 6
-5.77228 6
-Update speed: 16 ms0 6
-5.78218 6
-Update speed: 16 ms0 6
-5.79208 6
-Update speed: 16 ms0 6
-5.80198 6
-Update speed: 16 ms0 6
-5.81188 6
-Update speed: 16 ms0 6
-5.82178 6
-Update speed: 16 ms0 7
-5.84158 7
-Update speed: 16 ms0 7
-5.86139 7
-Update speed: 16 ms0 7
-5.88119 7
-Update speed: 16 ms0 6
-5.89109 6
-Update speed: 16 ms0 7
-5.91089 7
-Update speed: 16 ms0 7
-5.93069 7
-Update speed: 16 ms0 7
-5.9505 7
-Update speed: 16 ms0 8
-5.9802 8
-Update speed: 16 ms0 8
-6.0099 8
-Update speed: 16 ms0 8
-6.0396 8
-Update speed: 16 ms0 8
-6.06931 8
-Update speed: 16 ms0 8
-6.09901 8
-Update speed: 16 ms0 8
-6.12871 8
-Update speed: 16 ms0 8
-6.15842 8
-Update speed: 16 ms0 8
-6.18812 8
-Update speed: 16 ms0 8
-6.21782 8
-Update speed: 16 ms0 8
-6.24752 8
-Update speed: 16 ms0 8
-6.27723 8
-Update speed: 16 ms0 8
-6.30693 8
-Update speed: 16 ms0 8
-6.33663 8
-Update speed: 16 ms0 8
-6.36634 8
-Update speed: 16 ms0 8
-6.39604 8
-Update speed: 16 ms0 8
-6.42574 8
-Update speed: 16 ms0 8
-6.45545 8
-Update speed: 16 ms0 8
-6.48515 8
-Update speed: 16 ms0 8
-6.51485 8
-Update speed: 16 ms0 8
-6.54455 8
-Update speed: 16 ms0 8
-6.57426 8
-Update speed: 16 ms0 8
-6.60396 8
-Update speed: 16 ms0 8
-6.63366 8
-Update speed: 16 ms0 8
-6.66337 8
-Update speed: 16 ms0 8
-6.69307 8
-Update speed: 16 ms0 8
-6.72277 8
-Update speed: 16 ms0 8
-6.75248 8
-Update speed: 16 ms0 8
-6.78218 8
-Update speed: 16 ms0 8
-6.81188 8
-Update speed: 16 ms0 8
-6.84158 8
-Update speed: 16 ms0 8
-6.87129 8
-Update speed: 16 ms0 8
-6.90099 8
-Update speed: 16 ms0 8
-6.93069 8
-Update speed: 16 ms0 8
-6.9604 8
-Update speed: 16 ms0 8
-6.9901 8
-Update speed: 16 ms0 8
-7.0198 8
-Update speed: 16 ms0 8
-7.0396 8
-Update speed: 16 ms0 8
-7.05941 8
-Update speed: 16 ms0 8
-7.07921 8
-Update speed: 16 ms0 8
-7.09901 8
-Update speed: 16 ms0 8
-7.11881 8
-Update speed: 16 ms0 8
-7.13861 8
-Update speed: 16 ms0 8
-7.15842 8
-Update speed: 16 ms0 8
-7.17822 8
-Update speed: 16 ms0 8
-7.19802 8
-Update speed: 16 ms0 8
-7.20792 8
-Update speed: 16 ms0 8
-7.21782 8
-Update speed: 16 ms0 8
-7.22772 8
-Update speed: 16 ms0 8
-7.23762 8
-Update speed: 16 ms0 8
-7.24752 8
-Update speed: 16 ms0 8
-7.25743 8
-Update speed: 16 ms0 8
-7.26733 8
-Update speed: 16 ms0 8
-7.27723 8
-Update speed: 16 ms0 8
-7.28713 8
-Update speed: 16 ms0 8
-7.29703 8
-Update speed: 16 ms0 8
-7.30693 8
-Update speed: 16 ms0 8
-7.31683 8
-Update speed: 16 ms0 8
-7.32673 8
-Update speed: 16 ms0 8
-7.33663 8
-Update speed: 16 ms0 8
-7.34653 8
-Update speed: 16 ms0 8
-7.35644 8
-Update speed: 16 ms0 8
-7.36634 8
-Update speed: 16 ms0 8
-7.37624 8
-Update speed: 16 ms0 8
-7.38614 8
-Update speed: 16 ms0 8
-7.39604 8
-Update speed: 16 ms0 8
-7.40594 8
-Update speed: 16 ms0 8
-7.41584 8
-Update speed: 16 ms0 8
-7.42574 8
-Update speed: 16 ms0 8
-7.43564 8
-Update speed: 16 ms0 8
-7.44554 8
-Update speed: 16 ms0 8
-7.45545 8
-Update speed: 16 ms0 8
-7.46535 8
-Update speed: 16 ms0 8
-7.47525 8
-Update speed: 16 ms0 8
-7.48515 8
-Update speed: 16 ms0 8
-7.49505 8
-Update speed: 16 ms0 8
-7.50495 8
-Update speed: 16 ms0 8
-7.52475 8
-Update speed: 16 ms0 8
-7.54455 8
-Update speed: 16 ms0 8
-7.56436 8
-Update speed: 16 ms0 8
-7.58416 8
-Update speed: 16 ms0 8
-7.60396 8
-Update speed: 16 ms0 8
-7.62376 8
-Update speed: 16 ms0 8
-7.64356 8
-Update speed: 16 ms0 8
-7.66337 8
-Update speed: 16 ms0 8
-7.68317 8
-Update speed: 16 ms0 8
-7.70297 8
-Update speed: 16 ms0 8
-7.72277 8
-Update speed: 16 ms0 8
-7.74257 8
-Update speed: 16 ms0 8
-7.76238 8
-Update speed: 16 ms0 8
-7.78218 8
-Update speed: 16 ms0 8
-7.80198 8
-Update speed: 16 ms0 8
-7.82178 8
-Update speed: 16 ms0 8
-7.84158 8
-Update speed: 16 ms0 8
-7.85149 8
-Update speed: 16 ms0 8
-7.86139 8
-Update speed: 16 ms0 8
-7.87129 8
-Update speed: 16 ms0 8
-7.89109 8
-Update speed: 16 ms0 8
-7.90099 8
-Update speed: 16 ms0 8
-7.91089 8
-Update speed: 16 ms0 8
-7.92079 8
-Update speed: 16 ms0 8
-7.92079 8
-Update speed: 16 ms0 9
-7.93069 9
-Update speed: 16 ms0 9
-7.94059 9
-Update speed: 16 ms0 9
-7.9505 9
-Update speed: 16 ms0 9
-7.9604 9
-Update speed: 16 ms0 9
-7.9703 9
-Update speed: 16 ms0 9
-7.9802 9
-Update speed: 16 ms0 9
-7.9901 9
-Update speed: 16 ms0 9
-8 9
-Update speed: 16 ms0 9
-8.0099 9
-Update speed: 16 ms0 9
-8.0198 9
-Update speed: 16 ms0 9
-8.0297 9
-Update speed: 16 ms0 9
-8.0396 9
-Update speed: 16 ms0 9
-8.04951 9
-Update speed: 16 ms0 9
-8.05941 9
-Update speed: 16 ms0 9
-8.06931 9
-Update speed: 16 ms0 9
-8.07921 9
-Update speed: 16 ms0 9
-8.08911 9
-Update speed: 16 ms0 9
-8.09901 9
-Update speed: 16 ms0 9
-8.10891 9
-Update speed: 16 ms0 9
-8.11881 9
-Update speed: 16 ms0 9
-8.12871 9
-Update speed: 16 ms0 9
-8.13861 9
-Update speed: 16 ms0 9
-8.14851 9
-Update speed: 16 ms0 9
-8.15842 9
-Update speed: 16 ms0 9
-8.16832 9
-Update speed: 16 ms0 9
-8.17822 9
-Update speed: 16 ms0 9
-8.18812 9
-Update speed: 16 ms0 9
-8.19802 9
-Update speed: 16 ms0 9
-8.20792 9
-Update speed: 16 ms0 9
-8.21782 9
-Update speed: 16 ms0 9
-8.22772 9
-Update speed: 16 ms0 9
-8.23762 9
-Update speed: 16 ms0 9
-8.24753 9
-Update speed: 16 ms0 9
-8.25743 9
-Update speed: 16 ms0 9
-8.26733 9
-Update speed: 16 ms0 9
-8.27723 9
-Update speed: 16 ms0 9
-8.28713 9
-Update speed: 16 ms0 9
-8.29703 9
-Update speed: 16 ms0 9
-8.30693 9
-Update speed: 16 ms0 9
-8.31683 9
-Update speed: 16 ms0 9
-8.32673 9
-Update speed: 16 ms0 9
-8.33663 9
-Update speed: 16 ms0 9
-8.34653 9
-Update speed: 16 ms0 9
-8.35644 9
-Update speed: 16 ms0 9
-8.36634 9
-Update speed: 16 ms0 9
-8.37624 9
-Update speed: 16 ms0 9
-8.38614 9
-Update speed: 16 ms0 9
-8.39604 9
-Update speed: 16 ms0 9
-8.40594 9
-Update speed: 16 ms0 9
-8.41584 9
-Update speed: 16 ms0 9
-8.42574 9
-Update speed: 16 ms0 9
-8.43564 9
-Update speed: 16 ms0 9
-8.44554 9
-Update speed: 16 ms0 9
-8.45545 9
-Update speed: 16 ms0 9
-8.46535 9
-Update speed: 16 ms0 9
-8.47525 9
-Update speed: 16 ms0 9
-8.48515 9
-Update speed: 16 ms0 9
-8.49505 9
-Update speed: 16 ms0 9
-8.50495 9
-Update speed: 16 ms0 9
-8.51485 9
-Update speed: 16 ms0 9
-8.52475 9
-Update speed: 16 ms0 9
-8.53465 9
-Update speed: 16 ms0 9
-8.54455 9
-Update speed: 16 ms0 9
-8.55446 9
-Update speed: 16 ms0 9
-8.56436 9
-Update speed: 16 ms0 9
-8.57426 9
-Update speed: 16 ms0 9
-8.58416 9
-Update speed: 16 ms0 9
-8.59406 9
-Update speed: 16 ms0 9
-8.60396 9
-Update speed: 16 ms0 9
-8.61386 9
-Update speed: 16 ms0 9
-8.62376 9
-Update speed: 16 ms0 9
-8.63366 9
-Update speed: 16 ms0 9
-8.64356 9
-Update speed: 16 ms0 9
-8.65347 9
-Update speed: 16 ms0 9
-8.66337 9
-Update speed: 16 ms0 9
-8.67327 9
-Update speed: 16 ms0 9
-8.68317 9
-Update speed: 16 ms0 9
-8.69307 9
-Update speed: 16 ms0 9
-8.70297 9
-Update speed: 16 ms0 9
-8.71287 9
-Update speed: 16 ms0 9
-8.72277 9
-Update speed: 16 ms0 9
-8.73267 9
-Update speed: 16 ms0 9
-8.74257 9
-Update speed: 16 ms0 9
-8.75247 9
-Update speed: 16 ms0 9
-8.76238 9
-Update speed: 16 ms0 9
-8.77228 9
-Update speed: 16 ms0 9
-8.78218 9
-Update speed: 16 ms0 9
-8.79208 9
-Update speed: 16 ms0 9
-8.80198 9
-Update speed: 16 ms0 9
-8.81188 9
-Update speed: 16 ms0 9
-8.82178 9
-Update speed: 16 ms0 9
-8.83168 9
-Update speed: 16 ms0 9
-8.84158 9
-Update speed: 16 ms0 9
-8.85149 9
-Update speed: 14 ms0 9
-8.86139 9
-Update speed: 15 ms0 9
-8.87129 9
-Update speed: 16 ms0 9
-8.88119 9
-Update speed: 16 ms0 9
-8.89109 9
-Update speed: 16 ms0 9
-8.90099 9
-Update speed: 16 ms0 9
-8.91089 9
-Update speed: 16 ms0 9
-8.91089 9
-Update speed: 16 ms0 9
-8.91089 9
-Update speed: 16 ms0 9
-8.91089 9
-Update speed: 16 ms0 9
-8.91089 9
-Update speed: 16 ms0 9
-8.91089 9
-Update speed: 16 ms0 9
-8.91089 9
-Update speed: 16 ms0 9
-8.91089 9
-Update speed: 16 ms0 9
-8.91089 9
-Update speed: 16 ms0 9
-8.91089 9
-Update speed: 16 ms0 9
-8.91089 9
-Update speed: 16 ms0 9
-8.91089 9
-Update speed: 16 ms0 9
-8.91089 9
-Update speed: 16 ms0 9
-8.91089 9
-Update speed: 16 ms0 9
-8.91089 9
-Update speed: 16 ms0 9
-8.91089 9
-Update speed: 16 ms0 9
-8.91089 9
-Update speed: 16 ms0 9
-8.91089 9
-Update speed: 16 ms0 9
-8.91089 9
-Update speed: 16 ms0 9
-8.91089 9
-Update speed: 16 ms0 9
-8.91089 9
-Update speed: 16 ms0 9
-8.91089 9
-Update speed: 16 ms0 9
-8.91089 9
-Update speed: 16 ms0 9
-8.91089 9
-Update speed: 16 ms0 9
-8.91089 9
-Update speed: 16 ms0 9
-8.91089 9
-Update speed: 16 ms0 9
-8.91089 9
-Update speed: 16 ms0 9
-8.91089 9
-Update speed: 16 ms0 9
-8.91089 9
-Update speed: 16 ms0 9
-8.91089 9
-Update speed: 16 ms0 9
-8.91089 9
-Update speed: 16 ms0 9
-8.91089 9
-Update speed: 16 ms0 9
-8.91089 9
-Update speed: 16 ms0 9
-8.91089 9
-Update speed: 16 ms0 9
-8.91089 9
-Update speed: 14 ms0 10
-8.92079 10
-Update speed: 14 ms0 10
-8.93069 10
-Update speed: 15 ms0 10
-8.94059 10
-Update speed: 15 ms0 10
-8.95049 10
-Update speed: 16 ms0 10
-8.9604 10
-Update speed: 16 ms0 10
-8.9703 10
-Update speed: 16 ms0 10
-8.9802 10
-Update speed: 16 ms0 10
-8.9901 10
-Update speed: 16 ms0 10
-9 10
-Update speed: 16 ms0 10
-9.0099 10
-Update speed: 16 ms0 10
-9.0198 10
-Update speed: 16 ms0 10
-9.0297 10
-Update speed: 16 ms0 10
-9.0396 10
-Update speed: 16 ms0 10
-9.04951 10
-Update speed: 16 ms0 10
-9.05941 10
-Update speed: 16 ms0 10
-9.06931 10
-Update speed: 16 ms0 10
-9.07921 10
-Update speed: 16 ms0 10
-9.08911 10
-Update speed: 16 ms0 10
-9.09901 10
-Update speed: 16 ms0 10
-9.10891 10
-Update speed: 16 ms0 10
-9.11881 10
-Update speed: 16 ms0 10
-9.12871 10
-Update speed: 16 ms0 10
-9.13861 10
-Update speed: 16 ms0 10
-9.14851 10
-Update speed: 16 ms0 10
-9.15842 10
-Update speed: 16 ms0 10
-9.16832 10
-Update speed: 16 ms0 10
-9.17822 10
-Update speed: 16 ms0 10
-9.18812 10
-Update speed: 16 ms0 10
-9.19802 10
-Update speed: 16 ms0 10
-9.20792 10
-Update speed: 16 ms0 10
-9.21782 10
-Update speed: 16 ms0 10
-9.22772 10
-Update speed: 16 ms0 10
-9.23762 10
-Update speed: 16 ms0 10
-9.24753 10
-Update speed: 16 ms0 10
-9.25743 10
-Update speed: 16 ms0 10
-9.26733 10
-Update speed: 16 ms0 10
-9.27723 10
-Update speed: 16 ms0 10
-9.28713 10
-Update speed: 16 ms0 10
-9.29703 10
-Update speed: 16 ms0 10
-9.30693 10
-Update speed: 16 ms0 10
-9.31683 10
-Update speed: 16 ms0 10
-9.32673 10
-Update speed: 16 ms0 10
-9.33663 10
-Update speed: 16 ms0 11
-9.35644 11
-Update speed: 16 ms0 11
-9.37624 11
-Update speed: 16 ms0 11
-9.39604 11
-Update speed: 16 ms0 11
-9.41584 11
-Update speed: 16 ms0 11
-9.43564 11
-Update speed: 16 ms0 11
-9.45545 11
-Update speed: 16 ms0 11
-9.47525 11
-Update speed: 16 ms0 11
-9.49505 11
-Update speed: 16 ms0 11
-9.51485 11
-Update speed: 16 ms0 11
-9.53465 11
-Update speed: 16 ms0 11
-9.55446 11
-Update speed: 14 ms0 11
-9.57426 11
-Update speed: 15 ms0 11
-9.59406 11
-Update speed: 16 ms0 11
-9.61386 11
-Update speed: 16 ms0 11
-9.63366 11
-Update speed: 16 ms0 11
-9.65347 11
-Update speed: 16 ms0 11
-9.67327 11
-Update speed: 16 ms0 11
-9.69307 11
-Update speed: 16 ms0 11
-9.71287 11
-Update speed: 16 ms0 11
-9.73267 11
-Update speed: 16 ms0 11
-9.75247 11
-Update speed: 16 ms0 11
-9.77228 11
-Update speed: 11 ms0 11
-9.79208 11
-Update speed: 11 ms0 11
-9.81188 11
-Update speed: 12 ms0 11
-9.83168 11
-Update speed: 12 ms0 11
-9.85149 11
-Update speed: 12 ms0 11
-9.87129 11
-Update speed: 13 ms0 12
-9.90099 12
-Update speed: 13 ms0 13
-9.94059 13
-Update speed: 14 ms0 13
-9.9802 13
-Update speed: 15 ms0 13
-10.0198 13
-Update speed: 15 ms0 13
-10.0594 13
-Update speed: 15 ms0 13
-10.099 13
-Update speed: 16 ms0 13
-10.1386 13
-Update speed: 16 ms0 13
-10.1782 13
-Update speed: 16 ms0 13
-10.2178 13
-Update speed: 16 ms0 13
-10.2574 13
-Update speed: 16 ms0 13
-10.297 13
-Update speed: 16 ms0 13
-10.3366 13
-Update speed: 16 ms0 13
-10.3762 13
-Update speed: 16 ms0 13
-10.4158 13
-Update speed: 16 ms0 13
-10.4554 13
-Update speed: 16 ms0 13
-10.495 13
-Update speed: 16 ms0 13
-10.5347 13
-Update speed: 16 ms0 13
-10.5743 13
-Update speed: 16 ms0 13
-10.6139 13
-Update speed: 16 ms0 13
-10.6535 13
-Update speed: 16 ms0 13
-10.6931 13
-Update speed: 16 ms0 13
-10.7327 13
-Update speed: 16 ms0 13
-10.7723 13
-Update speed: 16 ms0 13
-10.8119 13
-Update speed: 16 ms0 12
-10.8416 12
-Update speed: 16 ms0 12
-10.8713 12
-Update speed: 16 ms0 12
-10.901 12
-Update speed: 16 ms0 12
-10.9307 12
-Update speed: 16 ms0 12
-10.9604 12
-Update speed: 16 ms0 12
-10.9901 12
-Update speed: 16 ms0 12
-11.0099 12
-Update speed: 16 ms0 12
-11.0297 12
-Update speed: 16 ms0 12
-11.0495 12
-Update speed: 16 ms0 12
-11.0693 12
-Update speed: 16 ms0 12
-11.0891 12
-Update speed: 16 ms0 12
-11.1089 12
-Update speed: 16 ms0 12
-11.1287 12
-Update speed: 16 ms0 12
-11.1485 12
-Update speed: 16 ms0 12
-11.1683 12
-Update speed: 17 ms0 12
-11.1881 12
-Update speed: 16 ms0 12
-11.2079 12
-Update speed: 16 ms0 12
-11.2277 12
-Update speed: 16 ms0 12
-11.2475 12
-Update speed: 16 ms0 12
-11.2673 12
-Update speed: 16 ms0 12
-11.2871 12
-Update speed: 16 ms0 12
-11.3069 12
-Update speed: 16 ms0 12
-11.3267 12
-Update speed: 16 ms0 12
-11.3465 12
-Update speed: 16 ms0 12
-11.3663 12
-Update speed: 16 ms0 12
-11.3861 12
-Update speed: 16 ms0 12
-11.4059 12
-Update speed: 16 ms0 12
-11.4257 12
-Update speed: 16 ms0 12
-11.4455 12
-Update speed: 16 ms0 12
-11.4653 12
-Update speed: 16 ms0 12
-11.4851 12
-Update speed: 16 ms0 12
-11.505 12
-Update speed: 16 ms0 12
-11.5248 12
-Update speed: 16 ms0 12
-11.5446 12
-Update speed: 16 ms0 12
-11.5644 12
-Update speed: 16 ms0 12
-11.5842 12
-Update speed: 16 ms0 12
-11.604 12
-Update speed: 16 ms0 12
-11.6238 12
-Update speed: 16 ms0 12
-11.6436 12
-Update speed: 16 ms0 12
-11.6634 12
-Update speed: 16 ms0 12
-11.6832 12
-Update speed: 16 ms0 12
-11.703 12
-Update speed: 16 ms0 12
-11.7228 12
-Update speed: 16 ms0 12
-11.7426 12
-Update speed: 16 ms0 12
-11.7624 12
-Update speed: 16 ms0 12
-11.7822 12
-Update speed: 16 ms0 12
-11.802 12
-Update speed: 16 ms0 12
-11.8218 12
-Update speed: 16 ms0 11
-11.8317 11
-Update speed: 16 ms0 11
-11.8317 11
-Update speed: 16 ms0 11
-11.8317 11
-Update speed: 16 ms0 11
-11.8317 11
-Update speed: 15 ms0 11
-11.8317 11
-Update speed: 16 ms0 11
-11.8317 11
-Update speed: 16 ms0 11
-11.8317 11
-Update speed: 16 ms0 11
-11.8317 11
-Update speed: 16 ms0 11
-11.8317 11
-Update speed: 13 ms0 11
-11.8317 11
-Update speed: 14 ms0 11
-11.8317 11
-Update speed: 14 ms0 11
-11.8317 11
-Update speed: 15 ms0 12
-11.8416 12
-Update speed: 16 ms0 12
-11.8515 12
-Update speed: 16 ms0 12
-11.8614 12
-Update speed: 16 ms0 12
-11.8713 12
-Update speed: 16 ms0 12
-11.8812 12
-Update speed: 16 ms0 12
-11.8911 12
-Update speed: 16 ms0 12
-11.901 12
-Update speed: 16 ms0 12
-11.9109 12
-Update speed: 16 ms0 12
-11.9208 12
-Update speed: 16 ms0 12
-11.9307 12
-Update speed: 16 ms0 12
-11.9406 12
-Update speed: 16 ms0 12
-11.9505 12
-Update speed: 16 ms0 12
-11.9604 12
-Update speed: 16 ms0 12
-11.9703 12
-Update speed: 16 ms0 12
-11.9802 12
-Update speed: 16 ms0 12
-11.9901 12
-Update speed: 16 ms0 12
-11.9901 12
-Update speed: 16 ms0 12
-11.9802 12
-Update speed: 16 ms0 12
-11.9703 12
-Update speed: 16 ms0 12
-11.9604 12
-Update speed: 16 ms0 12
-11.9505 12
-Update speed: 16 ms0 12
-11.9406 12
-Update speed: 16 ms0 12
-11.9307 12
-Update speed: 16 ms0 12
-11.9208 12
-Update speed: 16 ms0 12
-11.9109 12
-Update speed: 16 ms0 12
-11.901 12
-Update speed: 16 ms0 12
-11.8911 12
-Update speed: 16 ms0 12
-11.8812 12
-Update speed: 16 ms0 14
-11.8911 14
-Update speed: 16 ms0 14
-11.901 14
-Update speed: 16 ms0 14
-11.9109 14
-Update speed: 16 ms0 14
-11.9208 14
-Update speed: 16 ms0 14
-11.9307 14
-Update speed: 16 ms0 14
-11.9406 14
-Update speed: 16 ms0 14
-11.9505 14
-Update speed: 16 ms0 14
-11.9604 14
-Update speed: 16 ms0 14
-11.9703 14
-Update speed: 16 ms0 15
-11.9901 15
-Update speed: 16 ms0 15
-12.0099 15
-Update speed: 16 ms0 15
-12.0297 15
-Update speed: 16 ms0 15
-12.0594 15
-Update speed: 16 ms0 15
-12.0891 15
-Update speed: 16 ms0 15
-12.1188 15
-Update speed: 16 ms0 15
-12.1485 15
-Update speed: 16 ms0 15
-12.1782 15
-Update speed: 16 ms0 15
-12.2079 15
-Update speed: 16 ms0 15
-12.2376 15
-Update speed: 16 ms0 15
-12.2673 15
-Update speed: 16 ms0 15
-12.297 15
-Update speed: 16 ms0 15
-12.3267 15
-Update speed: 16 ms0 15
-12.3564 15
-Update speed: 16 ms0 15
-12.3861 15
-Update speed: 16 ms0 15
-12.4158 15
-Update speed: 16 ms0 15
-12.4455 15
-Update speed: 16 ms0 15
-12.4752 15
-Update speed: 16 ms0 15
-12.505 15
-Update speed: 16 ms0 15
-12.5347 15
-Update speed: 16 ms0 15
-12.5644 15
-Update speed: 16 ms0 15
-12.5941 15
-Update speed: 16 ms0 15
-12.6238 15
-Update speed: 16 ms0 15
-12.6535 15
-Update speed: 16 ms0 15
-12.6832 15
-Update speed: 16 ms0 15
-12.7129 15
-Update speed: 16 ms0 15
-12.7426 15
-Update speed: 16 ms0 15
-12.7723 15
-Update speed: 16 ms0 15
-12.802 15
-Update speed: 16 ms0 15
-12.8317 15
-Update speed: 16 ms0 15
-12.8614 15
-Update speed: 16 ms0 15
-12.8911 15
-Update speed: 16 ms0 15
-12.9208 15
-Update speed: 16 ms0 15
-12.9505 15
-Update speed: 16 ms0 15
-12.9802 15
-Update speed: 16 ms0 15
-13.0099 15
-Update speed: 16 ms0 15
-13.0396 15
-Update speed: 16 ms0 15
-13.0693 15
-Update speed: 16 ms0 15
-13.099 15
-Update speed: 16 ms0 15
-13.1287 15
-Update speed: 16 ms0 15
-13.1584 15
-Update speed: 16 ms0 15
-13.1881 15
-Update speed: 16 ms0 15
-13.2178 15
-Update speed: 16 ms0 15
-13.2475 15
-Update speed: 16 ms0 15
-13.2772 15
-Update speed: 16 ms0 15
-13.3069 15
-Update speed: 16 ms0 14
-13.3267 14
-Update speed: 16 ms0 14
-13.3465 14
-Update speed: 16 ms0 14
-13.3663 14
-Update speed: 16 ms0 14
-13.3861 14
-Update speed: 16 ms0 14
-13.4059 14
-Update speed: 16 ms0 14
-13.4356 14
-Update speed: 16 ms0 14
-13.4653 14
-Update speed: 16 ms0 14
-13.495 14
-Update speed: 16 ms0 14
-13.5248 14
-Update speed: 16 ms0 14
-13.5545 14
-Update speed: 16 ms0 14
-13.5842 14
-Update speed: 16 ms0 14
-13.6139 14
-Update speed: 16 ms0 14
-13.6436 14
-Update speed: 16 ms0 14
-13.6733 14
-Update speed: 16 ms0 14
-13.703 14
-Update speed: 16 ms0 14
-13.7327 14
-Update speed: 16 ms0 14
-13.7624 14
-Update speed: 16 ms0 14
-13.7822 14
-Update speed: 16 ms0 14
-13.802 14
-Update speed: 16 ms0 14
-13.8218 14
-Update speed: 16 ms0 14
-13.8416 14
-Update speed: 16 ms0 14
-13.8614 14
-Update speed: 16 ms0 14
-13.8812 14
-Update speed: 16 ms0 14
-13.901 14
-Update speed: 16 ms0 14
-13.9208 14
-Update speed: 16 ms0 14
-13.9406 14
-Update speed: 16 ms0 14
-13.9604 14
-Update speed: 16 ms0 14
-13.9802 14
-Update speed: 16 ms0 14
-14 14
-Update speed: 16 ms0 14
-14.0198 14
-Update speed: 16 ms0 14
-14.0396 14
-Update speed: 16 ms0 14
-14.0594 14
-Update speed: 16 ms0 14
-14.0792 14
-Update speed: 16 ms0 14
-14.099 14
-Update speed: 16 ms0 14
-14.1188 14
-Update speed: 16 ms0 14
-14.1386 14
-Update speed: 16 ms0 14
-14.1584 14
-Update speed: 16 ms0 14
-14.1782 14
-Update speed: 16 ms0 14
-14.198 14
-Update speed: 16 ms0 15
-14.2277 15
-Update speed: 16 ms0 15
-14.2574 15
-Update speed: 16 ms0 15
-14.2871 15
-Update speed: 16 ms0 15
-14.3168 15
-Update speed: 16 ms0 15
-14.3465 15
-Update speed: 16 ms0 15
-14.3762 15
-Update speed: 16 ms0 15
-14.3861 15
-Update speed: 16 ms
