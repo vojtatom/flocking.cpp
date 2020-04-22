@@ -198,7 +198,7 @@ void main(void)
         traverseCell(xprev, ynext, znext);
         traverseCell(x, ynext, znext);
         traverseCell(xnext, ynext, znext);
-
+        
         if (inrange > 0)
         {
             me.acc += limit((normalize(align) * SPFAC - me.vel), FORLIM);
