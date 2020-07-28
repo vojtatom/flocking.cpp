@@ -88,7 +88,7 @@ struct Camera
      * 
      * Allows for smooth camera position interpolation
      */
-    void frame();
+    void frame(bool run);
 
     /**
      * @brief Target camera position
@@ -166,4 +166,6 @@ struct Camera
      * @brief Far plane distance
      */
     float ffar;
+
+    size_t width, height;
 };

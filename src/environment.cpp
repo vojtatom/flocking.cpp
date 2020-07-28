@@ -14,6 +14,7 @@ Environment::Environment(int argc, char *argv[])
     addRecord("boidCount", 1024);
     addRecord("spaceLow", -1000, -1000, -1000);
     addRecord("spaceHigh", 1000, 1000, 1000);
+    addRecord("camera", 0, 0, 100);
     addRecord("dark", 1);
 
     //flocking
@@ -126,7 +127,8 @@ Environment::Environment(int argc, char *argv[])
 
     //setup grid
     glm::vec3 space = getVec("spaceHigh") - getVec("spaceLow");
-    float zone = 2 * getFloat("flockingZone");
+    //float zone = 2 * getFloat("flockingZone");
+    float zone = getFloat("flockingZone");
     glm::uvec3 grid = glm::max(space / zone, glm::vec3(1));
     cout << "grid: " << grid << endl;
     addRecord("grid", grid.x, grid.y, grid.z);

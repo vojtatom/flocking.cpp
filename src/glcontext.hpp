@@ -147,13 +147,15 @@ public:
      * 
      * Uses instancing to spead up the drawing of boids and boxes.
      */
-    void draw();
+    void draw(bool run);
 
     /**
      * @brief Camera class
      */
     Camera camera;
 
+
+    bool capture;
 private:
     /**
      * @brief Loads shader file from path

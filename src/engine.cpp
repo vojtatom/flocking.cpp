@@ -152,7 +152,7 @@ void EngineCPUBasic::draw()
     //update values
     update();
     context->setupBoids();
-    context->draw();
+    context->draw(run);
 
     //handle UI
     interface.updateContext();
@@ -215,7 +215,7 @@ void EngineCPUTree::draw()
     update();
     context->setupBoids();
     context->setupTree();
-    context->draw();
+    context->draw(run);
     tree->printStats();
 
     //handle UI
@@ -282,7 +282,7 @@ void EngineGPUBasic::draw()
     //update values
     timer.startTime();
     update();
-    context->draw();
+    context->draw(run);
 
     //handle UI
     interface.updateContext();
@@ -361,7 +361,7 @@ void EngineGPUGrid::draw()
     //update values
     timer.startTime();
     update();
-    context->draw();
+    context->draw(run);
 
     //handle UI
     interface.updateContext();

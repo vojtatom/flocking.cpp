@@ -17,6 +17,11 @@ void Interface::down(int key)
     {
         engine->run = !engine->run;
     }
+
+    if (keymap['c'])
+    {
+        engine->context->capture = true;
+    }
 }
 
 void Interface::up(int key)

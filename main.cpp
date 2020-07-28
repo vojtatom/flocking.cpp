@@ -11,8 +11,8 @@ using namespace std;
 
 /// Main windows parameters
 #define TITLE "Flocking"
-#define WIDTH 500
-#define HEIGHT 500
+#define WIDTH 1920
+#define HEIGHT 1080
 
 static int window;
 
@@ -241,7 +241,7 @@ int main(int argc, char *argv[])
     glutSetKeyRepeat(GLUT_KEY_REPEAT_OFF);
     glutMouseFunc(myMouse);
     glutMotionFunc(myMouseMove);
-    glutReshapeWindow(800, 600);
+    glutReshapeWindow(WIDTH, HEIGHT);
     glutMainLoop();
     return 0;
 }

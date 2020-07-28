@@ -13,13 +13,16 @@ using namespace std;
 Camera::Camera(glm::vec3 _pos, glm::vec3 _center, glm::vec3 _up)
     : pos(_pos), center(_center), up(_up), sPos(_pos), sCenter(center), sUp(_up), fovy(45), aspect(1), fnear(1), ffar(10000)
 {
+    //projection = glm::ortho(-500, 500, -500, 500);
     projection = glm::perspective(fovy, aspect, fnear, ffar);
     view = glm::lookAt(pos, center, up);
 }
 
 void Camera::resize(int w, int h){
+    width = w, height = h;
     aspect = float(w) / float(h);
     projection = glm::perspective(fovy, aspect, fnear, ffar);
+    //projection = glm::ortho(-1000.f, 1000.f, -1000.f * 1080.f / 1920.f, 1000.f * 1080.f / 1920.f, fnear, ffar);//glm::perspective(fovy, aspect, fnear, ffar);
 }
 
 #define MINDIST 20
@@ -53,8 +56,8 @@ void Camera::set(float x, float y, float z)
 
 void Camera::rotate(int deltaX, int deltaY) {
 
-    float a_x = -deltaX * DELTA * 0.5; //x to radian?
-    float a_y = deltaY * DELTA * 0.5; //y to radian?
+    float a_x = -deltaX * DELTA *DELTA * 0.5; //x to radian?
+    float a_y = deltaY * DELTA * DELTA* 0.5; //y to radian?
 
     glm::vec3 forw = center - pos;
     glm::vec3 axisX = glm::cross(up, forw);
@@ -88,7 +91,7 @@ void Camera::rotateDirect(float deltaX, float deltaY) {
 
 #define MAXSPEED 0.1f
 
-void Camera::frame(){
+void Camera::frame(bool run){
     glm::vec3 tmp = pos - sPos;
 
     posMomentum = fmin(glm::length(tmp), MAXSPEED * 2.0f);
@@ -119,7 +122,7 @@ void Camera::frame(){
 
     if (centerMomentum != 0 || rotMomentum != 0 || posMomentum != 0){
         view = glm::lookAt(sPos, sCenter, sUp);
-    } else {
-        //rotateDirect(0.1, 0.1);
+    } else if (run) {
+        //rotateDirect(0.05, 0.025);
     }
 }

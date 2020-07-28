@@ -21,9 +21,7 @@
 
 using namespace std;
 
-
-
-void getGLError(const char * desc)
+void getGLError(const char *desc)
 {
     GLenum error = glGetError();
 
@@ -50,14 +48,15 @@ string Context::glslHeader()
     float speedFac = env->getFloat("speedFactor");
     float forceLim = env->getFloat("forceLimit");
 
-    string header = 
+    string header =
         "#version 430 core"
-        "\n#define RANGE " + to_string(range) +
+        "\n#define RANGE " +
+        to_string(range) +
         "\n#define SPFAC " + to_string(speedFac) +
         "\n#define FORLIM " + to_string(forceLim) +
         "\n\n";
 
-   return header;
+    return header;
 }
 
 GLuint Context::loadCompileShader(const char *path, GLenum shaderType)
@@ -223,7 +222,7 @@ void Context::initPrograms()
     ri.unif["size"] = glGetUniformLocation(ri.id, "size");
     ri.unif["gridRes"] = glGetUniformLocation(ri.id, "gridRes");
 
-    //grid flocking 
+    //grid flocking
     Program &fg = gridFlockProgram;
     fg.id = createProgram("src/shaders/flockGrid.glsl");
     fg.unif["size"] = glGetUniformLocation(fg.id, "size");
@@ -399,10 +398,13 @@ void Context::drawBoids()
 Context::Context(BoidContainer *_agents, Environment *_env)
     : camera(glm::vec3(0, 0, 100), glm::vec3(0, 0, 0), glm::vec3(0, 1, 0))
 {
+    capture = false;
     agents = _agents;
     tree = nullptr;
     env = _env;
 
+    glm::vec3 cam = env->getVec("camera");
+    camera.pos = cam;
     boidSize = env->getFloat("boidSize");
     treeMemoryLimit = env->getInt("treeMemoryLimit");
     darkMode = env->getInt("dark");
@@ -423,7 +425,7 @@ Context::Context(BoidContainer *_agents, Environment *_env)
 
     int32_t boidCount = 1 << env->getInt("boidCount");
 
-    invocations = 1024; // play it safe with minimum allowed number
+    invocations = 1024;//1024; // play it safe with minimum allowed number
     groups = max(boidCount / invocations, 1);
 
     cout << "Using " << groups << " x " << invocations << " invocations" << endl;
@@ -570,7 +572,7 @@ void Context::computeShaderUpdateBoids()
     float *limits = (float *)glMapBufferRange(GL_SHADER_STORAGE_BUFFER, 0, 2 * sizeof(float), GL_MAP_READ_BIT);
     //or alternatively
     //float *limits = (float *)glMapNamedBufferRange(reductionBuffer, 0, 2 * sizeof(float), GL_MAP_READ_BIT);
-   
+
     agents->updateStats(limits[0], limits[1]);
 
     glUnmapBuffer(GL_SHADER_STORAGE_BUFFER);
@@ -637,7 +639,6 @@ void Context::computeShaderSortBoids()
         segmentSize *= 2;
     } while (segmentSize <= agents->size);
 
-
     //update indices in buffer
     glUseProgram(gridReindexProgram.id);
     glUniform1ui(gridReindexProgram.unif["size"], agents->size);
@@ -676,15 +677,38 @@ void Context::copyBoidsToCPU()
     glBindBuffer(GL_SHADER_STORAGE_BUFFER, 0);
 }
 
-void Context::draw()
+char pixel_data[3 * 1920 * 1080];
+
+void screendump(const char *tga_file, short W, short H)
 {
-    camera.frame();
+    FILE *out = fopen(tga_file, "w");
+    short TGAhead[] = {0, 2, 0, 0, 0, 0, W, H, 24};
+
+    glReadBuffer(GL_FRONT);
+    glReadPixels(0, 0, W, H, GL_BGR, GL_UNSIGNED_BYTE, pixel_data);
+    glMemoryBarrier(GL_PIXEL_BUFFER_BARRIER_BIT);
+    fwrite(&TGAhead, sizeof(TGAhead), 1, out);
+    fwrite(pixel_data, 3 * W * H, 1, out);
+    fclose(out);
+}
+
+static size_t frame_c = 0;
+
+void Context::draw(bool run)
+{
+    camera.frame(run);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glDisable(GL_BLEND);
     drawBoids();
     glEnable(GL_BLEND);
     drawBoxes();
     glBindVertexArray(vao);
+
+    /*if (capture)
+    {
+        screendump(("out/" + to_string(frame_c++) + ".tga").c_str(), camera.width, camera.height);
+        capture = false;
+    }*/
 
     //cout << "\rBoxes: " << treeNodeCount << " Drawing: " << glGetError() << " Agents: " << agents->size << flush;
 }
