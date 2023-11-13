@@ -10,4 +10,4 @@ Implementation includes:
 
 ## Outputs
 
-I made a [blogpost describing the design, there are also some outputs, see more here!](https://vojtatom.github.io/flocking)
+I made a [blogpost describing the design, there are also some outputs, see more here!](https://vojtatom.github.io/flocking.cpp)

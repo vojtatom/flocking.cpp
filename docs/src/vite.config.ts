@@ -4,18 +4,19 @@ import { ViteImageOptimizer } from "vite-plugin-image-optimizer";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [
-    react(),
-    ViteImageOptimizer({
-      png: {
-        quality: 50,
-      },
-      webp: {
-        quality: 50,
-      },
-      jpeg: {
-        quality: 50,
-      },
-    }),
-  ],
+    base: "/flocking.cpp",
+    plugins: [
+        react(),
+        ViteImageOptimizer({
+            png: {
+                quality: 50,
+            },
+            webp: {
+                quality: 50,
+            },
+            jpeg: {
+                quality: 50,
+            },
+        }),
+    ],
 });
