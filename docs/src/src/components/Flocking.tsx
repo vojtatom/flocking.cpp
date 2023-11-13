@@ -255,16 +255,14 @@ export function FlockingPostPage() {
 
             <h2>Design</h2>
             <p>The most straightforward approach would be:</p>
+            {/* prettier-ignore */}
             <pre>
                 <span>for each boid as b:</span>
-                <span> for each boid as e:</span>
-                <span>
-                    {" "}
-                    if (e is in the flocking range of b) and (e is not b):
-                </span>
-                <span> accumulate forces from e to b</span>
+                <span>    for each boid as e:</span>
+                <span>        if (e is in the flocking range of b) and (e is not b):</span>
+                <span>            accumulate forces from e to b</span>
                 <span>for each boid as b:</span>
-                <span> apply accumulated forces to b</span>
+                <span>    apply accumulated forces to b</span>
             </pre>
             <p>
                 The obvious downfall of this approach is its quadratic
@@ -330,18 +328,15 @@ export function FlockingPostPage() {
                 this can be effectively done using the GPU! Each GPU thread can
                 simulate a single boid:
             </p>
+            {/* prettier-ignore */}
             <pre>
                 <span>inside each thread:</span>
-                <span> my_boid = boid[thread_id]</span>
-                <span> for each boid as b:</span>
-                <span>
-                    {" "}
-                    if (b is in the flocking range of my_boid) and (b is not
-                    my_boid):
-                </span>
-                <span> accumulate forces from b</span>
+                <span>    my_boid = boid[thread_id]</span>
+                <span>    for each boid as b:</span>
+                <span>        if (b is in the flocking range of my_boid) and (b is not my_boid):</span>
+                <span>            accumulate forces from b</span>
                 <span>sync all threads</span>
-                <span> apply forces to my_boid</span>
+                <span>    apply forces to my_boid</span>
                 <span>sync all threads</span>
             </pre>
 
@@ -371,34 +366,28 @@ export function FlockingPostPage() {
                 <li>or organizing boids into a uniform 3D grid.</li>
             </ul>
             <p>Both of these approaches are quite similar:</p>
+            {/* prettier-ignore */}
             <pre>
                 <span>inside each thread:</span>
-                <span> my_boid = boid[thread_id]</span>
-                <span>
-                    {" "}
-                    my_boid.cell = compute which cell my_boid belongs to
-                </span>
+                <span>    my_boid = boid[thread_id]</span>
+                <span>    my_boid.cell = compute which cell my_boid belongs to</span>
                 <span></span>
                 <span>sync all threads</span>
                 <span>parallel-sort the boids according to my_boid.cell</span>
                 <span>sync all threads</span>
                 <span></span>
                 <span>inside each thread:</span>
-                <span> my_boid = boid[thread_id]</span>
-                <span> for each relevant cell as c:</span>
+                <span>    my_boid = boid[thread_id]</span>
+                <span>    for each "relevant cell" as c:</span>
                 <span></span>
-                <span> #the boids in each cell can be accessed quickly</span>
-                <span> #since the array is sorted</span>
+                <span>        #the boids in each cell can be accessed quickly</span>
+                <span>        #since the boids are sorted according to their current cell id</span>
                 <span></span>
-                <span> for each boid in cell c as b:</span>
-                <span>
-                    {" "}
-                    if (b is in the flocking range of my_boid) and (b is not
-                    my_boid):
-                </span>
-                <span> accumulate forces from b</span>
+                <span>        for each boid in c as b:</span>
+                <span>            if (b is in the flocking range of my_boid) and (b is not my_boid):</span>
+                <span>                accumulate forces from b</span>
                 <span></span>
-                <span> apply forces to my_boid</span>
+                <span>    apply forces to my_boid</span>
                 <span>sync all threads</span>
             </pre>
             <p>
