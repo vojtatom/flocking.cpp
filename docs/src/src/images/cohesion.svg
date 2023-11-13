@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg version="1.1" width="300px" height="300px" preserveAspectRatio="none" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+  <g transform="matrix(1 0 0 -1 0 300)">
+    <g transform="matrix(1 0 0 -1 0 300)">
+      <path d="M 253.637 149.906 C 253.637 208.723 205.953 256.406 147.137 256.406 C 88.316 256.406 40.637 208.723 40.637 149.906 C 40.637 91.09 88.316 43.406 147.137 43.406 C 205.953 43.406 253.637 91.09 253.637 149.906 Z M 253.637 149.906" style="fill: none; stroke-opacity: 1; stroke-miterlimit: 4; stroke-linecap: butt; stroke-linejoin: miter; stroke-width: 4.5px; stroke-dashoffset: 0px; stroke: rgb(0, 128, 255);"/>
+    </g>
+    <g transform="matrix(1 0 0 -1 0 300)">
+      <path d="M 148.594 159.281 L 124.117 141.457" style="fill: none; stroke: rgb(255, 0, 0); stroke-opacity: 1; stroke-miterlimit: 4; stroke-linecap: butt; stroke-linejoin: miter; stroke-width: 3px; stroke-dashoffset: 0px;"/>
+    </g>
+    <g transform="matrix(1 0 0 -1 0 300)">
+      <path d="M 124.746 141.062 L 119.031 91.754" style="fill: none; stroke: rgb(255, 170, 170); stroke-opacity: 1; stroke-miterlimit: 4; stroke-linecap: butt; stroke-linejoin: miter; stroke-width: 3px; stroke-dashoffset: 0px;"/>
+    </g>
+    <g transform="matrix(1 0 0 -1 0 300)">
+      <path d="M 124.555 141.449 L 86.387 198.531" style="fill: none; stroke: rgb(255, 170, 170); stroke-opacity: 1; stroke-miterlimit: 4; stroke-linecap: butt; stroke-linejoin: miter; stroke-width: 3px; stroke-dashoffset: 0px;"/>
+    </g>
+    <g transform="matrix(1 0 0 -1 0 300)">
+      <path d="M 125.012 142.094 L 202.262 102.531" style="fill: none; stroke: rgb(255, 170, 170); stroke-opacity: 1; stroke-miterlimit: 4; stroke-linecap: butt; stroke-linejoin: miter; stroke-width: 3px; stroke-dashoffset: 0px;"/>
+    </g>
+    <g transform="matrix(1 0 0 -1 0 300)">
+      <path d="M 138.887 168.281 L 147.137 131.531 L 155.387 168.281 Z M 138.887 168.281" style="fill: rgb(255, 0, 0); fill-opacity: 1;"/>
+      <path d="M 187.691 106.242 L 219.852 86.637 L 199.156 118.105 Z M 187.691 106.242" style="fill-opacity: 1; fill: rgb(0, 128, 255);"/>
+      <path d="M 218.605 257.547 L 245.188 230.863 L 232.562 266.348 Z M 218.605 257.547" style="fill-opacity: 1; fill: rgb(136, 136, 136);"/>
+      <path d="M 33.984 262.402 L 49.527 228.098 L 50.141 265.758 Z M 33.984 262.402" style="fill-opacity: 1; fill: rgb(136, 136, 136);"/>
+      <path d="M 31.82 65.051 L 53.867 34.516 L 46.988 71.547 Z M 31.82 65.051" style="fill-opacity: 1; fill: rgb(136, 136, 136);"/>
+      <path d="M 105.219 94.746 L 129.773 66.188 L 119.781 102.504 Z M 105.219 94.746" style="fill-opacity: 1; fill: rgb(0, 128, 255);"/>
+      <path d="M 72.719 203.469 L 93.879 172.312 L 88.066 209.527 Z M 72.719 203.469" style="fill-opacity: 1; fill: rgb(0, 128, 255);"/>
+      <path d="M 255.43 89.871 L 279.496 60.898 L 270.125 97.379 Z M 255.43 89.871" style="fill-opacity: 1; fill: rgb(136, 136, 136);"/>
+    </g>
+    <g transform="matrix(0.703855 1 1 -0.703855 0 300)">
+      <path d="M -37.696 154.044 L -35.964 150.978 L -34.235 154.045 Z M -37.696 154.044" style="fill: none; stroke: rgb(255, 0, 0); stroke-opacity: 1; stroke-miterlimit: 4; stroke-linecap: butt; stroke-linejoin: miter; stroke-width: 2.45324px; stroke-dashoffset: 0px;"/>
+    </g>
+  </g>
+</svg>

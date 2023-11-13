@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="0 0 400 400" height="400" width="400" id="svg2" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <g transform="matrix(1.3333333,0,0,1.3333333,0,1e-5)" id="g10">
+    <g id="g12">
+      <g id="g16">
+        <path id="path18" style="fill: none; stroke-width: 4.5; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 4; stroke-dasharray: none; stroke-opacity: 1; stroke: rgb(0, 128, 255);" d="m 253.637,149.906 c 0,58.817 -47.684,106.5 -106.5,106.5 -58.821,0 -106.5,-47.683 -106.5,-106.5 0,-58.816 47.679,-106.5 106.5,-106.5 58.816,0 106.5,47.684 106.5,106.5 z"/>
+      </g>
+      <g id="g20">
+        <path id="path22" style="fill:none;stroke:#ff0000;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" d="m 147.902,159.281 19.7,11.856"/>
+      </g>
+      <g id="g24">
+        <path id="path26" style="fill:none;stroke:#ffaaaa;stroke-width:1.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" d="M 136.223,53.82 117.121,90.227"/>
+      </g>
+      <g id="g28">
+        <path id="path30" style="fill:none;stroke:#ffaaaa;stroke-width:1.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" d="m 99.684,157.523 -16.36,41.774"/>
+      </g>
+      <g id="g32">
+        <path id="path34" style="fill:none;stroke:#ff0000;stroke-width:1.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" d="M 147.105,112.762 147,158.934"/>
+      </g>
+      <g transform="matrix(1,0.388272,-0.388272,1,0,0)" id="g36">
+        <path id="path38" style="fill:none;stroke:#ffaaaa;stroke-width:1.39829803;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" d="m 174.789,47.173 -0.815,21.071"/>
+      </g>
+      <g id="g40">
+        <path id="path42" style="fill:none;stroke:#ffaaaa;stroke-width:1.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" d="m 230.625,76.66 -28.363,25.871"/>
+      </g>
+      <path id="path44" style="fill:#ff0000;fill-opacity:1;fill-rule:nonzero;stroke:none" d="m 138.887,168.281 8.25,-36.75 8.25,36.75 z"/>
+      <path id="path46" style="fill-opacity: 1; fill-rule: nonzero; stroke: none; fill: rgb(0, 128, 255);" d="m 187.691,106.242 32.161,-19.605 -20.696,31.468 z"/>
+      <path id="path48" style="fill-opacity: 1; fill-rule: nonzero; stroke: none; fill: rgb(136, 136, 136);" d="m 218.605,257.547 26.583,-26.684 -12.626,35.485 z"/>
+      <path id="path50" style="fill-opacity: 1; fill-rule: nonzero; stroke: none; fill: rgb(136, 136, 136);" d="m 33.984,262.402 15.543,-34.304 0.614,37.66 z"/>
+      <path id="path52" style="fill-opacity: 1; fill-rule: nonzero; stroke: none; fill: rgb(136, 136, 136);" d="M 31.82,65.051 53.867,34.516 46.988,71.547 Z"/>
+      <path id="path54" style="fill-opacity: 1; fill-rule: nonzero; stroke: none; fill: rgb(0, 128, 255);" d="m 105.219,94.746 24.554,-28.558 -9.992,36.316 z"/>
+      <path id="path56" style="fill-opacity: 1; fill-rule: nonzero; stroke: none; fill: rgb(0, 128, 255);" d="m 72.719,203.469 21.16,-31.157 -5.813,37.215 z"/>
+      <path id="path58" style="fill-opacity: 1; fill-rule: nonzero; stroke: none; fill: rgb(136, 136, 136);" d="m 255.43,89.871 24.066,-28.973 -9.371,36.481 z"/>
+      <g transform="matrix(-0.548755,1,-1,-0.548755,0,0)" id="g60">
+        <path id="path62" style="fill:none;stroke:#ff0000;stroke-width:2.63002896;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" d="m 58.894,-199.799 1.856,-3.288 1.856,3.29 z"/>
+      </g>
+    </g>
+  </g>
+</svg>
