@@ -1,0 +1,13 @@
+
+
+.sketch {
+    position: relative;
+    height: min(45rem, 80vh);
+}
+
+.sketch canvas {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
